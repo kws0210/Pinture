@@ -12,7 +12,6 @@
 		F67950D1208843C6000F7548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67950CF208843C6000F7548 /* Main.storyboard */; };
 		F67950D3208843C7000F7548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F67950D2208843C7000F7548 /* Assets.xcassets */; };
 		F67950D6208843C7000F7548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67950D4208843C7000F7548 /* LaunchScreen.storyboard */; };
-		F67950E1208843C7000F7548 /* PintureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950E0208843C7000F7548 /* PintureTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,17 +32,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F67950C8208843C6000F7548 /* Pinture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Pinture.app; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/Pinture.app"; sourceTree = "<absolute>"; };
+		F66DDF7D20884C02006ACFEE /* Pinture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Pinture.app; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/Pinture.app"; sourceTree = "<absolute>"; };
+		F66DDF7E20884C02006ACFEE /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
+		F66DDF7F20884C02006ACFEE /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 		F67950CB208843C6000F7548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67950CD208843C6000F7548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F67950D0208843C6000F7548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F67950D2208843C7000F7548 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F67950D5208843C7000F7548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F67950D7208843C7000F7548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F67950DC208843C7000F7548 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
-		F67950E0208843C7000F7548 /* PintureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintureTests.swift; sourceTree = "<group>"; };
-		F67950E2208843C7000F7548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F67950E7208843C7000F7548 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				F67950CA208843C6000F7548 /* Pinture */,
-				F67950DF208843C7000F7548 /* PintureTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,15 +86,6 @@
 				F67950D7208843C7000F7548 /* Info.plist */,
 			);
 			path = Pinture;
-			sourceTree = "<group>";
-		};
-		F67950DF208843C7000F7548 /* PintureTests */ = {
-			isa = PBXGroup;
-			children = (
-				F67950E0208843C7000F7548 /* PintureTests.swift */,
-				F67950E2208843C7000F7548 /* Info.plist */,
-			);
-			path = PintureTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +105,7 @@
 			);
 			name = Pinture;
 			productName = Pinture;
-			productReference = F67950C8208843C6000F7548 /* Pinture.app */;
+			productReference = F66DDF7D20884C02006ACFEE /* Pinture.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F67950DB208843C7000F7548 /* PintureTests */ = {
@@ -136,7 +123,7 @@
 			);
 			name = PintureTests;
 			productName = PintureTests;
-			productReference = F67950DC208843C7000F7548 /* PintureTests.xctest */;
+			productReference = F66DDF7E20884C02006ACFEE /* PintureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F67950E6208843C7000F7548 /* PintureUITests */ = {
@@ -154,7 +141,7 @@
 			);
 			name = PintureUITests;
 			productName = PintureUITests;
-			productReference = F67950E7208843C7000F7548 /* PintureUITests.xctest */;
+			productReference = F66DDF7F20884C02006ACFEE /* PintureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -241,7 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F67950E1208843C7000F7548 /* PintureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

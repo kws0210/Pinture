@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F675278020A36AAF0078F266 /* ARWorldViewController.swift */; };
 		F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CB208843C6000F7548 /* AppDelegate.swift */; };
 		F67950CE208843C6000F7548 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CD208843C6000F7548 /* MapViewController.swift */; };
 		F67950D1208843C6000F7548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67950CF208843C6000F7548 /* Main.storyboard */; };
@@ -49,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F675277E20A36A540078F266 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
+		F675277F20A36A540078F266 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
+		F675278020A36AAF0078F266 /* ARWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldViewController.swift; sourceTree = "<group>"; };
 		F67950CB208843C6000F7548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67950CD208843C6000F7548 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F67950D0208843C6000F7548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,8 +77,6 @@
 		F67BA23920A351B400241812 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F67BA23B20A351BD00241812 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F67BA23D20A351C300241812 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F67BA24120A35E2300241812 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
-		F67BA24220A35E2300241812 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				F67950CB208843C6000F7548 /* AppDelegate.swift */,
 				F67950CD208843C6000F7548 /* MapViewController.swift */,
+				F675278020A36AAF0078F266 /* ARWorldViewController.swift */,
 				F67950CF208843C6000F7548 /* Main.storyboard */,
 				F67950D2208843C7000F7548 /* Assets.xcassets */,
 				F67950D4208843C7000F7548 /* LaunchScreen.storyboard */,
@@ -199,7 +202,7 @@
 			);
 			name = PintureTests;
 			productName = PintureTests;
-			productReference = F67BA24120A35E2300241812 /* PintureTests.xctest */;
+			productReference = F675277E20A36A540078F266 /* PintureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F67950E6208843C7000F7548 /* PintureUITests */ = {
@@ -217,7 +220,7 @@
 			);
 			name = PintureUITests;
 			productName = PintureUITests;
-			productReference = F67BA24220A35E2300241812 /* PintureUITests.xctest */;
+			productReference = F675277F20A36A540078F266 /* PintureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F67950CE208843C6000F7548 /* MapViewController.swift in Sources */,
+				F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */,
 				F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

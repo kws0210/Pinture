@@ -29,6 +29,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxj-l5-QyI">
+                                <rect key="frame" x="225" y="50" width="150" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3ee-9l-9fC"/>
+                                    <constraint firstAttribute="height" constant="45" id="oQ3-8b-dfs"/>
+                                </constraints>
+                                <state key="normal" title="AR START"/>
+                                <connections>
+                                    <segue destination="Zcf-P7-tcY" kind="presentation" id="aHS-r1-HoP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -39,6 +50,8 @@
                             <constraint firstItem="hGW-5F-iLZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qtl-yq-S9U"/>
                             <constraint firstItem="FMd-t8-hb8" firstAttribute="trailing" secondItem="hGW-5F-iLZ" secondAttribute="trailing" id="V9M-Tx-Pje"/>
                             <constraint firstItem="FMd-t8-hb8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZLI-6i-7oT"/>
+                            <constraint firstItem="sxj-l5-QyI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="uH4-3z-5Yb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sxj-l5-QyI" secondAttribute="trailing" id="wpo-u3-VpM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -50,6 +63,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="114.69265367316342"/>
+        </scene>
+        <!--World View Controller-->
+        <scene sceneID="hQp-tO-BnU">
+            <objects>
+                <viewController id="Zcf-P7-tcY" customClass="ARWorldViewController" customModule="Pinture" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gqY-eE-w8S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Gk-hw-HtU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZt-gu-MQa">
+                                <rect key="frame" x="225" y="70" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3bV-9c-OIB"/>
+                                </constraints>
+                                <state key="normal" title="EXIT"/>
+                                <connections>
+                                    <action selector="onTouchBtnStop:" destination="Zcf-P7-tcY" eventType="touchUpInside" id="hq4-lY-VRa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Gk-hw-HtU" firstAttribute="bottom" secondItem="aKD-1d-t4Z" secondAttribute="bottom" id="6jh-gL-PN6"/>
+                            <constraint firstItem="0Gk-hw-HtU" firstAttribute="trailing" secondItem="KZt-gu-MQa" secondAttribute="trailing" id="KxP-oa-TYb"/>
+                            <constraint firstItem="aKD-1d-t4Z" firstAttribute="trailing" secondItem="KZt-gu-MQa" secondAttribute="trailing" id="PHE-wT-lBH"/>
+                            <constraint firstItem="KZt-gu-MQa" firstAttribute="top" secondItem="aKD-1d-t4Z" secondAttribute="top" constant="50" id="PlZ-V1-CeN"/>
+                            <constraint firstItem="0Gk-hw-HtU" firstAttribute="top" secondItem="gqY-eE-w8S" secondAttribute="top" id="ck7-D3-ilU"/>
+                            <constraint firstItem="0Gk-hw-HtU" firstAttribute="leading" secondItem="gqY-eE-w8S" secondAttribute="leading" id="qkk-rx-h5I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aKD-1d-t4Z"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="0Gk-hw-HtU" id="uZg-G4-eTq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kpz-qO-j4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="808.79999999999995" y="114.69265367316342"/>
         </scene>
     </scenes>
 </document>

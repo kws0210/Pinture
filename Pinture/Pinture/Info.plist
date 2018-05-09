@@ -24,6 +24,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This application will use the camera for Augmented Reality.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>This application will use your location for Google map</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

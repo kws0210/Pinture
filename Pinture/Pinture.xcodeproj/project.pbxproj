@@ -8,10 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CB208843C6000F7548 /* AppDelegate.swift */; };
-		F67950CE208843C6000F7548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CD208843C6000F7548 /* ViewController.swift */; };
+		F67950CE208843C6000F7548 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CD208843C6000F7548 /* MapViewController.swift */; };
 		F67950D1208843C6000F7548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67950CF208843C6000F7548 /* Main.storyboard */; };
 		F67950D3208843C7000F7548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F67950D2208843C7000F7548 /* Assets.xcassets */; };
 		F67950D6208843C7000F7548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67950D4208843C7000F7548 /* LaunchScreen.storyboard */; };
+		F67BA21B20A3505200241812 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA21A20A3505200241812 /* GoogleMapsBase.framework */; };
+		F67BA22020A3508400241812 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA21E20A3508300241812 /* GoogleMapsCore.framework */; };
+		F67BA22120A3508400241812 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA21F20A3508400241812 /* GoogleMaps.framework */; };
+		F67BA22320A3511500241812 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F67BA22220A3511400241812 /* GoogleMaps.bundle */; };
+		F67BA22620A3515B00241812 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA22520A3515B00241812 /* Accelerate.framework */; };
+		F67BA22820A3516500241812 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA22720A3516500241812 /* CoreData.framework */; };
+		F67BA22A20A3516F00241812 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA22920A3516F00241812 /* CoreGraphics.framework */; };
+		F67BA22C20A3517700241812 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA22B20A3517700241812 /* CoreLocation.framework */; };
+		F67BA22E20A3518000241812 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA22D20A3518000241812 /* CoreText.framework */; };
+		F67BA23020A3518800241812 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA22F20A3518800241812 /* GLKit.framework */; };
+		F67BA23220A3519100241812 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23120A3519100241812 /* ImageIO.framework */; };
+		F67BA23420A3519A00241812 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23320A3519A00241812 /* libc++.tbd */; };
+		F67BA23620A351A300241812 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23520A351A300241812 /* libz.tbd */; };
+		F67BA23820A351AB00241812 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23720A351AB00241812 /* OpenGLES.framework */; };
+		F67BA23A20A351B400241812 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23920A351B400241812 /* QuartzCore.framework */; };
+		F67BA23C20A351BD00241812 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23B20A351BD00241812 /* SystemConfiguration.framework */; };
+		F67BA23E20A351C300241812 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23D20A351C300241812 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,15 +49,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F66DDF7D20884C02006ACFEE /* Pinture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Pinture.app; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/Pinture.app"; sourceTree = "<absolute>"; };
-		F66DDF7E20884C02006ACFEE /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
-		F66DDF7F20884C02006ACFEE /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 		F67950CB208843C6000F7548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F67950CD208843C6000F7548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F67950CD208843C6000F7548 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F67950D0208843C6000F7548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F67950D2208843C7000F7548 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F67950D5208843C7000F7548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F67950D7208843C7000F7548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F67BA21720A34EE800241812 /* Pinture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F67BA21A20A3505200241812 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
+		F67BA21E20A3508300241812 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
+		F67BA21F20A3508400241812 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		F67BA22220A3511400241812 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		F67BA22520A3515B00241812 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		F67BA22720A3516500241812 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F67BA22920A3516F00241812 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F67BA22B20A3517700241812 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F67BA22D20A3518000241812 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F67BA22F20A3518800241812 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		F67BA23120A3519100241812 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		F67BA23320A3519A00241812 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		F67BA23520A351A300241812 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		F67BA23720A351AB00241812 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F67BA23920A351B400241812 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F67BA23B20A351BD00241812 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F67BA23D20A351C300241812 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F67BA24120A35E2300241812 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
+		F67BA24220A35E2300241812 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +82,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67BA23E20A351C300241812 /* UIKit.framework in Frameworks */,
+				F67BA23C20A351BD00241812 /* SystemConfiguration.framework in Frameworks */,
+				F67BA23A20A351B400241812 /* QuartzCore.framework in Frameworks */,
+				F67BA23820A351AB00241812 /* OpenGLES.framework in Frameworks */,
+				F67BA23620A351A300241812 /* libz.tbd in Frameworks */,
+				F67BA23420A3519A00241812 /* libc++.tbd in Frameworks */,
+				F67BA23220A3519100241812 /* ImageIO.framework in Frameworks */,
+				F67BA23020A3518800241812 /* GLKit.framework in Frameworks */,
+				F67BA22E20A3518000241812 /* CoreText.framework in Frameworks */,
+				F67BA22C20A3517700241812 /* CoreLocation.framework in Frameworks */,
+				F67BA22A20A3516F00241812 /* CoreGraphics.framework in Frameworks */,
+				F67BA22820A3516500241812 /* CoreData.framework in Frameworks */,
+				F67BA22620A3515B00241812 /* Accelerate.framework in Frameworks */,
+				F67BA22020A3508400241812 /* GoogleMapsCore.framework in Frameworks */,
+				F67BA22120A3508400241812 /* GoogleMaps.framework in Frameworks */,
+				F67BA21B20A3505200241812 /* GoogleMapsBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +121,13 @@
 		F67950BF208843C6000F7548 = {
 			isa = PBXGroup;
 			children = (
+				F67BA22220A3511400241812 /* GoogleMaps.bundle */,
+				F67BA21F20A3508400241812 /* GoogleMaps.framework */,
+				F67BA21E20A3508300241812 /* GoogleMapsCore.framework */,
+				F67BA21A20A3505200241812 /* GoogleMapsBase.framework */,
 				F67950CA208843C6000F7548 /* Pinture */,
+				F67BA21720A34EE800241812 /* Pinture.app */,
+				F67BA22420A3515B00241812 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,13 +135,33 @@
 			isa = PBXGroup;
 			children = (
 				F67950CB208843C6000F7548 /* AppDelegate.swift */,
-				F67950CD208843C6000F7548 /* ViewController.swift */,
+				F67950CD208843C6000F7548 /* MapViewController.swift */,
 				F67950CF208843C6000F7548 /* Main.storyboard */,
 				F67950D2208843C7000F7548 /* Assets.xcassets */,
 				F67950D4208843C7000F7548 /* LaunchScreen.storyboard */,
 				F67950D7208843C7000F7548 /* Info.plist */,
 			);
 			path = Pinture;
+			sourceTree = "<group>";
+		};
+		F67BA22420A3515B00241812 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F67BA23D20A351C300241812 /* UIKit.framework */,
+				F67BA23B20A351BD00241812 /* SystemConfiguration.framework */,
+				F67BA23920A351B400241812 /* QuartzCore.framework */,
+				F67BA23720A351AB00241812 /* OpenGLES.framework */,
+				F67BA23520A351A300241812 /* libz.tbd */,
+				F67BA23320A3519A00241812 /* libc++.tbd */,
+				F67BA23120A3519100241812 /* ImageIO.framework */,
+				F67BA22F20A3518800241812 /* GLKit.framework */,
+				F67BA22D20A3518000241812 /* CoreText.framework */,
+				F67BA22B20A3517700241812 /* CoreLocation.framework */,
+				F67BA22920A3516F00241812 /* CoreGraphics.framework */,
+				F67BA22720A3516500241812 /* CoreData.framework */,
+				F67BA22520A3515B00241812 /* Accelerate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,7 +181,7 @@
 			);
 			name = Pinture;
 			productName = Pinture;
-			productReference = F66DDF7D20884C02006ACFEE /* Pinture.app */;
+			productReference = F67BA21720A34EE800241812 /* Pinture.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F67950DB208843C7000F7548 /* PintureTests */ = {
@@ -123,7 +199,7 @@
 			);
 			name = PintureTests;
 			productName = PintureTests;
-			productReference = F66DDF7E20884C02006ACFEE /* PintureTests.xctest */;
+			productReference = F67BA24120A35E2300241812 /* PintureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F67950E6208843C7000F7548 /* PintureUITests */ = {
@@ -141,7 +217,7 @@
 			);
 			name = PintureUITests;
 			productName = PintureUITests;
-			productReference = F66DDF7F20884C02006ACFEE /* PintureUITests.xctest */;
+			productReference = F67BA24220A35E2300241812 /* PintureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -195,6 +271,7 @@
 				F67950D6208843C7000F7548 /* LaunchScreen.storyboard in Resources */,
 				F67950D3208843C7000F7548 /* Assets.xcassets in Resources */,
 				F67950D1208843C6000F7548 /* Main.storyboard in Resources */,
+				F67BA22320A3511500241812 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F67950CE208843C6000F7548 /* ViewController.swift in Sources */,
+				F67950CE208843C6000F7548 /* MapViewController.swift in Sources */,
 				F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -380,6 +458,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -393,6 +472,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y3Z2Z567H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pinture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -411,6 +494,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y3Z2Z567H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pinture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

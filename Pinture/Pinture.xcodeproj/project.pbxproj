@@ -30,6 +30,16 @@
 		F67BA23A20A351B400241812 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23920A351B400241812 /* QuartzCore.framework */; };
 		F67BA23C20A351BD00241812 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23B20A351BD00241812 /* SystemConfiguration.framework */; };
 		F67BA23E20A351C300241812 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67BA23D20A351C300241812 /* UIKit.framework */; };
+		F6D56F8F20A402C800D31D53 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F6D56F8E20A402C800D31D53 /* art.scnassets */; };
+		F6D56F9120A4068C00D31D53 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9020A4068C00D31D53 /* PhotoLibraryViewController.swift */; };
+		F6D56F9420A407B000D31D53 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9320A407B000D31D53 /* VirtualObject.swift */; };
+		F6D56F9920A40A5D00D31D53 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9620A40A5D00D31D53 /* Gesture.swift */; };
+		F6D56F9A20A40A5D00D31D53 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9720A40A5D00D31D53 /* Plane.swift */; };
+		F6D56F9B20A40A5D00D31D53 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9820A40A5D00D31D53 /* FocusSquare.swift */; };
+		F6D56FA020A40A8C00D31D53 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9D20A40A8B00D31D53 /* Utilities.swift */; };
+		F6D56FA120A40A8C00D31D53 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9E20A40A8C00D31D53 /* CameraController.swift */; };
+		F6D56FA220A40A8C00D31D53 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9F20A40A8C00D31D53 /* ImageCollectionViewCell.swift */; };
+		F6D56FA520A40C4E00D31D53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FA420A40C4E00D31D53 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F675277E20A36A540078F266 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
-		F675277F20A36A540078F266 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 		F675278020A36AAF0078F266 /* ARWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldViewController.swift; sourceTree = "<group>"; };
 		F67950CB208843C6000F7548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67950CD208843C6000F7548 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +85,18 @@
 		F67BA23920A351B400241812 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F67BA23B20A351BD00241812 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F67BA23D20A351C300241812 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F6D56F8C20A4023600D31D53 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
+		F6D56F8D20A4023600D31D53 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
+		F6D56F8E20A402C800D31D53 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		F6D56F9020A4068C00D31D53 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		F6D56F9320A407B000D31D53 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		F6D56F9620A40A5D00D31D53 /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
+		F6D56F9720A40A5D00D31D53 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		F6D56F9820A40A5D00D31D53 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		F6D56F9D20A40A8B00D31D53 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		F6D56F9E20A40A8C00D31D53 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		F6D56F9F20A40A8C00D31D53 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6D56FA420A40C4E00D31D53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,11 +156,17 @@
 		F67950CA208843C6000F7548 /* Pinture */ = {
 			isa = PBXGroup;
 			children = (
+				F6D56FA320A40C3900D31D53 /* Data */,
+				F6D56F9C20A40A7900D31D53 /* Utils */,
+				F6D56F9520A40A3900D31D53 /* UI Elements */,
+				F6D56F9220A4078000D31D53 /* Virtual Objects */,
 				F67950CB208843C6000F7548 /* AppDelegate.swift */,
 				F67950CD208843C6000F7548 /* MapViewController.swift */,
 				F675278020A36AAF0078F266 /* ARWorldViewController.swift */,
+				F6D56F9020A4068C00D31D53 /* PhotoLibraryViewController.swift */,
 				F67950CF208843C6000F7548 /* Main.storyboard */,
 				F67950D2208843C7000F7548 /* Assets.xcassets */,
+				F6D56F8E20A402C800D31D53 /* art.scnassets */,
 				F67950D4208843C7000F7548 /* LaunchScreen.storyboard */,
 				F67950D7208843C7000F7548 /* Info.plist */,
 			);
@@ -165,6 +191,42 @@
 				F67BA22520A3515B00241812 /* Accelerate.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6D56F9220A4078000D31D53 /* Virtual Objects */ = {
+			isa = PBXGroup;
+			children = (
+				F6D56F9320A407B000D31D53 /* VirtualObject.swift */,
+			);
+			path = "Virtual Objects";
+			sourceTree = "<group>";
+		};
+		F6D56F9520A40A3900D31D53 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				F6D56F9820A40A5D00D31D53 /* FocusSquare.swift */,
+				F6D56F9620A40A5D00D31D53 /* Gesture.swift */,
+				F6D56F9720A40A5D00D31D53 /* Plane.swift */,
+			);
+			path = "UI Elements";
+			sourceTree = "<group>";
+		};
+		F6D56F9C20A40A7900D31D53 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F6D56F9E20A40A8C00D31D53 /* CameraController.swift */,
+				F6D56F9F20A40A8C00D31D53 /* ImageCollectionViewCell.swift */,
+				F6D56F9D20A40A8B00D31D53 /* Utilities.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F6D56FA320A40C3900D31D53 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F6D56FA420A40C4E00D31D53 /* DataManager.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +264,7 @@
 			);
 			name = PintureTests;
 			productName = PintureTests;
-			productReference = F675277E20A36A540078F266 /* PintureTests.xctest */;
+			productReference = F6D56F8C20A4023600D31D53 /* PintureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F67950E6208843C7000F7548 /* PintureUITests */ = {
@@ -220,7 +282,7 @@
 			);
 			name = PintureUITests;
 			productName = PintureUITests;
-			productReference = F675277F20A36A540078F266 /* PintureUITests.xctest */;
+			productReference = F6D56F8D20A4023600D31D53 /* PintureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -273,6 +335,7 @@
 			files = (
 				F67950D6208843C7000F7548 /* LaunchScreen.storyboard in Resources */,
 				F67950D3208843C7000F7548 /* Assets.xcassets in Resources */,
+				F6D56F8F20A402C800D31D53 /* art.scnassets in Resources */,
 				F67950D1208843C6000F7548 /* Main.storyboard in Resources */,
 				F67BA22320A3511500241812 /* GoogleMaps.bundle in Resources */,
 			);
@@ -299,9 +362,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D56F9420A407B000D31D53 /* VirtualObject.swift in Sources */,
+				F6D56FA520A40C4E00D31D53 /* DataManager.swift in Sources */,
+				F6D56FA220A40A8C00D31D53 /* ImageCollectionViewCell.swift in Sources */,
 				F67950CE208843C6000F7548 /* MapViewController.swift in Sources */,
 				F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */,
+				F6D56F9920A40A5D00D31D53 /* Gesture.swift in Sources */,
+				F6D56FA120A40A8C00D31D53 /* CameraController.swift in Sources */,
+				F6D56F9120A4068C00D31D53 /* PhotoLibraryViewController.swift in Sources */,
+				F6D56F9B20A40A5D00D31D53 /* FocusSquare.swift in Sources */,
+				F6D56FA020A40A8C00D31D53 /* Utilities.swift in Sources */,
 				F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */,
+				F6D56F9A20A40A5D00D31D53 /* Plane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

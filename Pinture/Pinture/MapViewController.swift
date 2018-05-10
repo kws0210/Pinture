@@ -2,7 +2,7 @@
 //  MapViewController.swift
 //  Pinture
 //
-//  Created by 7Team on 2018. 4. 19..
+//  Created by Team7 on 2018. 4. 19..
 //  Copyright © 2018년 Sogang. All rights reserved.
 //
 

@@ -30,6 +30,8 @@
 	<string>This application will use your location for Google map</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application will use your location for Google map</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This application will use the photo library for Augmented Reality.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

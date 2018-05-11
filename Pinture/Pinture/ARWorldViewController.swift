@@ -25,6 +25,8 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        setupSceneView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,6 +99,8 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         }
     }
     
+    
+    
     @IBAction func onTouchBtnStop(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -129,16 +133,15 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         } else {
             var hitTestOptions = [SCNHitTestOption: Any]()
             hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
-            let results: [SCNHitTestResult] = sceneView.hitTest((touches.first?.location(in: sceneView))!, options: hitTestOptions)
-            for result in results {
-                if VirtualObject.isNodePartOfVirtualObject(result.node) {
-                    var object = result.node
-                    while !(object is VirtualObject) {
-                        object = object.parent!
-                    }
-                    self.virtualObject = object as! VirtualObject
-
+            let hits = sceneView.hitTest((touches.first?.location(in: sceneView))!, options: hitTestOptions)
+            guard let result = hits.first else {return}
+            
+            if VirtualObject.isNodePartOfVirtualObject(result.node) {
+                var object = result.node
+                while !(object is VirtualObject) {
+                    object = object.parent!
                 }
+                self.virtualObject = object as! VirtualObject
             }
         }
     }
@@ -208,9 +211,6 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         if angleDegrees < 0 {
             angleDegrees += 360
         }
-        
-        let distance = String(format: "%.2f", distanceToUser)
-        let scale = String(format: "%.2f", object.scale.x)
     }
     
     func moveVirtualObjectToPosition(_ pos: SCNVector3?, _ instantly: Bool, _ filterPosition: Bool) {
@@ -421,6 +421,83 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             }
         }))
         self.present(alert, animated: true)
+    }
+    
+    
+    func loadVirtualObject() {
+        guard let image     = DataManager.sharedInstance.pickedImage            else {return}
+        guard let ext       = DataManager.sharedInstance.pickedExtensionName    else {return}
+        
+        resetVirtualObject()
+        
+        // Load the content asynchronously.
+        DispatchQueue.global().async {
+            
+            self.isLoadingObject = true
+            
+            
+                var pictureObject : VirtualObject
+                if image.size.width < image.size.height {
+                    pictureObject  = PictureFrame(pickedImage: image, extensionName: ext)
+                } else {
+                    pictureObject  = PictureFrameSecond(pickedImage: image, extensionName: ext)
+                }
+                pictureObject.viewController = self
+                self.virtualObject = pictureObject
+                
+                pictureObject.loadModel()
+            
+            DispatchQueue.main.async {
+                // Immediately place the object in 3D space.
+                self.setNewVirtualObjectPosition( SCNVector3(0, 0, 1) )
+                
+                // Update loading flag of the add object button
+                self.isLoadingObject = false
+            }
+        }
+    }
+    
+    func loadVirtualObject(sequence : Int, image : UIImage, position : SCNVector3, eulerAngles : SCNVector3, scale : SCNVector3) {
+        
+        // Load the content asynchronously.
+        DispatchQueue.global().async {
+            
+            if self.showingObjectSequenceList.contains(sequence) {
+                return
+            }
+            self.showingObjectSequenceList.add(sequence)
+            
+            self.loadImageModel(index: sequence - 1, image: image, position: position, eulerAngles: eulerAngles, scale: scale)
+            self.resetVirtualObject()
+        }
+    }
+    
+    
+    
+    func loadImageModel(index : Int, image : UIImage, position : SCNVector3, eulerAngles : SCNVector3, scale : SCNVector3 ) {
+        var pictureObject : VirtualObject
+        if image.size.width < image.size.height {
+            pictureObject = PictureFrame(pickedImage: image, extensionName: DataManager.sharedInstance.pickedExtensionName!)
+        } else {
+            pictureObject = PictureFrameSecond(pickedImage: image, extensionName: DataManager.sharedInstance.pickedExtensionName!)
+        }
+        
+        pictureObject.viewController = self
+        pictureObject.index = index
+        pictureObject.loadModel()
+        
+        DispatchQueue.main.async {
+            
+            pictureObject.position = position
+            pictureObject.eulerAngles = eulerAngles
+            pictureObject.scale = scale
+            
+            self.sceneView?.scene.rootNode.addChildNode(pictureObject)
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        loadVirtualObject()
     }
     
 }

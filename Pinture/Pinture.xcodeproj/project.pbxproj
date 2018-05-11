@@ -40,6 +40,8 @@
 		F6D56FA120A40A8C00D31D53 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9E20A40A8C00D31D53 /* CameraController.swift */; };
 		F6D56FA220A40A8C00D31D53 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56F9F20A40A8C00D31D53 /* ImageCollectionViewCell.swift */; };
 		F6D56FA520A40C4E00D31D53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FA420A40C4E00D31D53 /* DataManager.swift */; };
+		F6D56FA920A416DE00D31D53 /* PictureFrameSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FA620A416DD00D31D53 /* PictureFrameSecond.swift */; };
+		F6D56FAB20A416DE00D31D53 /* PictureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FA820A416DE00D31D53 /* PictureFrame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		F6D56F9E20A40A8C00D31D53 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		F6D56F9F20A40A8C00D31D53 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6D56FA420A40C4E00D31D53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		F6D56FA620A416DD00D31D53 /* PictureFrameSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureFrameSecond.swift; sourceTree = "<group>"; };
+		F6D56FA820A416DE00D31D53 /* PictureFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureFrame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				F6D56F9320A407B000D31D53 /* VirtualObject.swift */,
+				F6D56FA820A416DE00D31D53 /* PictureFrame.swift */,
+				F6D56FA620A416DD00D31D53 /* PictureFrameSecond.swift */,
 			);
 			path = "Virtual Objects";
 			sourceTree = "<group>";
@@ -365,12 +371,14 @@
 				F6D56F9420A407B000D31D53 /* VirtualObject.swift in Sources */,
 				F6D56FA520A40C4E00D31D53 /* DataManager.swift in Sources */,
 				F6D56FA220A40A8C00D31D53 /* ImageCollectionViewCell.swift in Sources */,
+				F6D56FA920A416DE00D31D53 /* PictureFrameSecond.swift in Sources */,
 				F67950CE208843C6000F7548 /* MapViewController.swift in Sources */,
 				F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */,
 				F6D56F9920A40A5D00D31D53 /* Gesture.swift in Sources */,
 				F6D56FA120A40A8C00D31D53 /* CameraController.swift in Sources */,
 				F6D56F9120A4068C00D31D53 /* PhotoLibraryViewController.swift in Sources */,
 				F6D56F9B20A40A5D00D31D53 /* FocusSquare.swift in Sources */,
+				F6D56FAB20A416DE00D31D53 /* PictureFrame.swift in Sources */,
 				F6D56FA020A40A8C00D31D53 /* Utilities.swift in Sources */,
 				F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */,
 				F6D56F9A20A40A5D00D31D53 /* Plane.swift in Sources */,

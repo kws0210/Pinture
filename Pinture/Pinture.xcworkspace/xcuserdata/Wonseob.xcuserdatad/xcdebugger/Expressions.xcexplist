@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "NetworkDataModule.init():NetworkDataModule.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ref.child(&quot;var&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "error.localizedDescription">
+            </PersistentString>
+            <PersistentString
+               value = "ref">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StartingLocationViewController.viewDidLoad():StartingLocationViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ref">
+            </PersistentString>
+            <PersistentString
+               value = "currentLatitude">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

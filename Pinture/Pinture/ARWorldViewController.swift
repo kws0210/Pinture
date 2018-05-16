@@ -19,7 +19,12 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     var virtualObjectList : [VirtualObject] = []
     var photoLibraryViewController : PhotoLibraryViewController?
 
+    
+    @IBOutlet weak var btnStop: UIButton!
+    @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var btnPlus: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

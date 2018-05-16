@@ -1,5 +1,5 @@
 //
-//  ARWorldViewController.swift
+//  DataManager.swift
 //  Pinture
 //
 //  Created by Team7 on 2018. 5. 10..
@@ -91,5 +91,5 @@ final class DataManager {
     }
     
     var viewState = viewStateEnum.AR
-    var dataModule = LocalDataModule()
+    var dataModule = NetworkDataModule()
 }

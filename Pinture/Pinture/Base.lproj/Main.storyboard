@@ -37,7 +37,7 @@
                                 </constraints>
                                 <state key="normal" title="AR START"/>
                                 <connections>
-                                    <segue destination="Zcf-P7-tcY" kind="presentation" id="aHS-r1-HoP"/>
+                                    <segue destination="WTj-PA-1lY" kind="presentation" id="5Ig-vt-6AI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -62,12 +62,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="114.69265367316342"/>
+            <point key="canvasLocation" x="-30" y="-633"/>
         </scene>
         <!--World View Controller-->
         <scene sceneID="hQp-tO-BnU">
             <objects>
-                <viewController id="Zcf-P7-tcY" customClass="ARWorldViewController" customModule="Pinture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARWorldViewController" id="Zcf-P7-tcY" customClass="ARWorldViewController" customModule="Pinture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gqY-eE-w8S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,12 +95,25 @@
                                     <action selector="onTouchBtnStop:" destination="Zcf-P7-tcY" eventType="touchUpInside" id="nc6-OD-PGe"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzK-QV-nRf">
+                                <rect key="frame" x="354" y="606" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="save"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGg-pH-NBj">
+                                <rect key="frame" x="354" y="536" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="delete"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aKD-1d-t4Z"/>
                     </view>
                     <connections>
+                        <outlet property="btnDelete" destination="eGg-pH-NBj" id="z4t-Cr-WTl"/>
                         <outlet property="btnPlus" destination="5B1-UF-e5V" id="yrw-HH-5bj"/>
+                        <outlet property="btnSave" destination="VzK-QV-nRf" id="xRK-vE-qhu"/>
+                        <outlet property="btnStop" destination="3gw-UG-8Tr" id="Ayt-G2-z80"/>
                         <outlet property="sceneView" destination="y2O-Qh-N3E" id="AKT-Lz-Doi"/>
                     </connections>
                 </viewController>
@@ -111,7 +124,7 @@
         <!--Photo Library View Controller-->
         <scene sceneID="AEn-7Q-ksr">
             <objects>
-                <viewController storyboardIdentifier="photoLibrary" id="YZo-Yf-wOV" customClass="PhotoLibraryViewController" customModule="timecapsule" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="photoLibrary" id="YZo-Yf-wOV" customClass="PhotoLibraryViewController" customModule="Pinture" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="suP-fO-3k5"/>
                         <viewControllerLayoutGuide type="bottom" id="BD0-sc-smW"/>
@@ -199,9 +212,89 @@
             </objects>
             <point key="canvasLocation" x="1532" y="115"/>
         </scene>
+        <!--Starting Location View Controller-->
+        <scene sceneID="GeH-aB-anA">
+            <objects>
+                <viewController storyboardIdentifier="StartingLocationViewController" id="WTj-PA-1lY" customClass="StartingLocationViewController" customModule="Pinture" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kdg-zF-16y"/>
+                        <viewControllerLayoutGuide type="bottom" id="MeJ-KV-QsI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kf6-aW-XNO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfU-gH-g0U">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-x9-Ykj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UK0-u4-oYL">
+                                <rect key="frame" x="0.0" y="472" width="414" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7p-Af-tuj">
+                                <rect key="frame" x="81" y="536" width="253" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <state key="normal" title="월드 만들기">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTouchBtnARWorld:" destination="WTj-PA-1lY" eventType="touchUpInside" id="1Sk-MN-5iF"/>
+                                </connections>
+                            </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="112-mE-Paz">
+                                <rect key="frame" x="0.0" y="486" width="414" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">새로운 월드의 입장 화면을 설정한 후
+[월드 만들기] 버튼을 클릭해주세요.</string>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0m-PZ-0K9">
+                                <rect key="frame" x="370" y="33" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <segue destination="G5H-LL-K75" kind="unwind" unwindAction="returnUnwindActionWithUnwindSegue:" id="Hor-ty-HAX"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="grq-lE-Zle">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Tgm-iQ-NjN"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="grq-lE-Zle" id="jgZ-YQ-yQh"/>
+                        <outlet property="bgEntrance" destination="UK0-u4-oYL" id="H3b-4v-U74"/>
+                        <outlet property="btnARWorld" destination="Z7p-Af-tuj" id="bu0-kH-3Lo"/>
+                        <outlet property="hintView" destination="OnU-x9-Ykj" id="LPk-Kn-WNp"/>
+                        <outlet property="previewView" destination="qfU-gH-g0U" id="yqK-8j-ErP"/>
+                        <outlet property="textDescription" destination="112-mE-Paz" id="6oJ-dq-f1S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5x-dj-DrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="G5H-LL-K75" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="809" y="-605"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add" width="48" height="48"/>
+        <image name="cancel" width="42" height="42"/>
+        <image name="delete" width="42" height="42"/>
         <image name="exit" width="42" height="42"/>
+        <image name="save" width="42" height="42"/>
     </resources>
 </document>

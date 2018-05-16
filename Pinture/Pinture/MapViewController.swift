@@ -13,6 +13,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @objc let locationManager = CLLocationManager()
     var currentLatitude, currentLongitude : CLLocationDegrees?
+    
+    @objc var marker = [GMSMarker]()
     @IBOutlet weak var mapView: GMSMapView!
     
     
@@ -32,6 +34,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.initiateData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let startingLocationViewController = segue.destination as? StartingLocationViewController {
+            startingLocationViewController.currentLatitude = currentLatitude
+            startingLocationViewController.currentLongitude = currentLongitude
+        }
+    }
+    
     override func loadView() {
         super.loadView()
         
@@ -46,5 +61,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.settings.myLocationButton = true
     }
     
+    func initiateData() {
+        DataManager.sharedInstance.dataModule = NetworkDataModule()
+        DataManager.sharedInstance.currentWorldInfo = nil
+        DataManager.sharedInstance.currentWorldIndex = -1
+        
+        DataManager.sharedInstance.msgInfoList.removeAll()
+        DataManager.sharedInstance.nearWorldInfoList.removeAll()
+        DataManager.sharedInstance.worldInfoList.removeAll()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        
+        currentLatitude    = locValue.latitude
+        currentLongitude   = locValue.longitude
+    }
 }
 

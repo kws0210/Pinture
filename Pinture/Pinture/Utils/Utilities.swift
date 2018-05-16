@@ -8,6 +8,7 @@
 import Foundation
 import ARKit
 import GoogleMaps
+import FirebaseStorage
 
 
 // MARK: - Collection extensions
@@ -593,4 +594,138 @@ func createPlane(size: CGSize, contents: AnyObject?) -> SCNPlane {
     let plane = SCNPlane(width: size.width, height: size.height)
     plane.materials = [SCNMaterial.material(withDiffuse: contents)]
     return plane
+}
+
+
+
+
+
+func formatJSONData(_ key : String, _ value : Any) -> String {
+    return "\"" + key + "\":" + "\"" + String(describing: value) + "\""
+}
+
+func formatMsgData( sequence : Int, world_sequence : Int, latitude : CLLocationDegrees, longitude : CLLocationDegrees
+    , position_x : Float, position_y : Float, position_z : Float
+    , eulerAngles_x : Float, eulerAngles_y : Float, eulerAngles_z : Float
+    , scale_x : Float, scale_y : Float, scale_z : Float
+    , extensionName : String, contentsType : Int, contentsUrl : String ) -> String {
+    
+    
+    
+    let jsonString = "{"
+        + formatJSONData("sequence", sequence) + ","
+        + formatJSONData("world_sequence", world_sequence) + ","
+        + formatJSONData("latitude", latitude) + ","
+        + formatJSONData("longitude", longitude) + ","
+        + formatJSONData("position_x", position_x) + ","
+        + formatJSONData("position_y", position_y) + ","
+        + formatJSONData("position_z", position_z) + ","
+        + formatJSONData("eulerAngles_x", eulerAngles_x) + ","
+        + formatJSONData("eulerAngles_y", eulerAngles_y) + ","
+        + formatJSONData("eulerAngles_z", eulerAngles_z) + ","
+        + formatJSONData("scale_x", scale_x) + ","
+        + formatJSONData("scale_y", scale_y) + ","
+        + formatJSONData("scale_z", scale_z) + ","
+        + formatJSONData("extension_name", extensionName) + ","
+        + formatJSONData("contents_type", contentsType) + ","
+        + formatJSONData("contents_url", contentsUrl)
+        + "}"
+    
+    return jsonString
+}
+
+func formatWorldData( world_sequence : Int, latitude : CLLocationDegrees, longitude : CLLocationDegrees
+    , imageUrl : String
+    , message : String
+    , time : String ) -> String {
+    
+    
+    
+    let jsonString = "{"
+        + formatJSONData("world_sequence", world_sequence) + ","
+        + formatJSONData("latitude", latitude) + ","
+        + formatJSONData("longitude", longitude) + ","
+        + formatJSONData("imageUrl", imageUrl) + ","
+        + formatJSONData("message", message) + ","
+        + formatJSONData("time", time)
+        + "}"
+    
+    return jsonString
+}
+
+
+
+func checkWorldExist(worldSequence : Int, posCompletion : (() -> Void)!, negCompletion : (() -> Void)!) {
+    return DataManager.sharedInstance.dataModule.checkWorldExist(worldSequence: worldSequence, posCompletion: posCompletion, negCompletion: negCompletion)
+}
+
+func getUserInfo(completionHandler: (() -> Void)!) {
+    DataManager.sharedInstance.dataModule.getUserWorldInfo(completionHandler: completionHandler)
+}
+
+
+func getMsgInfoList(completionHandler: (() -> Void)!) {
+    DataManager.sharedInstance.dataModule.getMsgData(contentsName: "msgInfoList", completionHandler: completionHandler)
+}
+
+func getWorldInfoList(completionHandler: (() -> Void)!) {
+    DataManager.sharedInstance.dataModule.getMsgData(contentsName: "worldInfoList", completionHandler: completionHandler)
+}
+
+func getNearWorldData(latitude: CLLocationDegrees!, longitude: CLLocationDegrees!, completionHandler: (() -> Void)!) {
+    DataManager.sharedInstance.dataModule.getNearWorldData(latitude: latitude, longitude: longitude, completionHandler: completionHandler)
+    for world in DataManager.sharedInstance.worldInfoList {
+        if abs(Int(Double(world.latitude) * 1000) - Int(Double(latitude) * 1000)) < 5
+            && abs(Int(Double(world.longitude) * 1000) - Int(Double(longitude) * 1000)) < 5 {
+            DataManager.sharedInstance.nearWorldInfoList.append(world)
+        }
+    }
+    
+    completionHandler()
+}
+
+
+
+func uploadWorldInfo(viewController : ARWorldViewController, completionHandler : (()->Void)!) {
+    
+    guard let worldInfo = DataManager.sharedInstance.currentWorldInfo else { return }
+    
+    DataManager.sharedInstance.dataModule.uploadWorldData( viewController : viewController, worldSequence: worldInfo.world_sequence,
+                                                           latitude: worldInfo.latitude, longitude: worldInfo.longitude,
+                                                           image: worldInfo.image!, message: worldInfo.message, time: worldInfo.time, completionHandler: completionHandler)
+}
+
+func addWorldInfo(worldSequece : Int, completionHandler: (()->Void)!) {
+    
+    DataManager.sharedInstance.dataModule.addWorldData(worldSequence: worldSequece, completionHandler: completionHandler)
+}
+
+
+func uploadMsgInfo(viewController : ARWorldViewController, completionHandler : (()->Void)!) {
+    DataManager.sharedInstance.dataModule.uploadMsgData(viewController: viewController, completionHandler: completionHandler)
+}
+
+
+
+
+func deleteWorldInfo(index: Int, completionHandler: (() -> Void)!) {
+    //delete current world info
+    let worldInfo = DataManager.sharedInstance.worldInfoList[index]
+    DataManager.sharedInstance.currentWorldInfo = (world_sequence: worldInfo.world_sequence, latitude: worldInfo.latitude, longitude: worldInfo.longitude, image: nil, message: "", time: "")
+    
+    getMsgInfoList(completionHandler: {
+        DataManager.sharedInstance.dataModule.deleteWorldData(completionHandler : {
+            DataManager.sharedInstance.msgInfoList.removeAll()
+            completionHandler()
+        })
+    })
+}
+
+func modifyWorldInfo(index: Int, message: String, completionHandler: (() -> Void)!) {
+    let worldInfo = DataManager.sharedInstance.worldInfoList[index]
+    DataManager.sharedInstance.currentWorldInfo = (world_sequence: worldInfo.world_sequence, latitude: worldInfo.latitude, longitude: worldInfo.longitude, image: nil, message: message, time: "")
+    
+    DataManager.sharedInstance.dataModule.modifyWorldData( index: index, completionHandler: {
+        completionHandler()
+    })
 }

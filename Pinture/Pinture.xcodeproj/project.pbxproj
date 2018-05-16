@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DEC1039D727A28BB889E1290 /* Pods_Pinture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE6C8357322DD20494266DB /* Pods_Pinture.framework */; };
 		F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F675278020A36AAF0078F266 /* ARWorldViewController.swift */; };
 		F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CB208843C6000F7548 /* AppDelegate.swift */; };
 		F67950CE208843C6000F7548 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CD208843C6000F7548 /* MapViewController.swift */; };
@@ -42,6 +43,9 @@
 		F6D56FA520A40C4E00D31D53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FA420A40C4E00D31D53 /* DataManager.swift */; };
 		F6D56FA920A416DE00D31D53 /* PictureFrameSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FA620A416DD00D31D53 /* PictureFrameSecond.swift */; };
 		F6D56FAB20A416DE00D31D53 /* PictureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FA820A416DE00D31D53 /* PictureFrame.swift */; };
+		F6D56FAE20AC048D00D31D53 /* DataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FAC20AC048C00D31D53 /* DataModule.swift */; };
+		F6D56FAF20AC048D00D31D53 /* LocalDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FAD20AC048D00D31D53 /* LocalDataModule.swift */; };
+		F6D56FB120AC058C00D31D53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6D56FB020AC058C00D31D53 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FE6C8357322DD20494266DB /* Pods_Pinture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6595F6B917E5F68481DCD630 /* Pods-Pinture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pinture/Pods-Pinture.debug.xcconfig"; sourceTree = "<group>"; };
+		CDA042F4F070586812EAD83A /* Pods-Pinture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinture.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinture/Pods-Pinture.release.xcconfig"; sourceTree = "<group>"; };
 		F675278020A36AAF0078F266 /* ARWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldViewController.swift; sourceTree = "<group>"; };
 		F67950CB208843C6000F7548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67950CD208843C6000F7548 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -87,8 +94,6 @@
 		F67BA23920A351B400241812 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F67BA23B20A351BD00241812 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F67BA23D20A351C300241812 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F6D56F8C20A4023600D31D53 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
-		F6D56F8D20A4023600D31D53 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 		F6D56F8E20A402C800D31D53 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		F6D56F9020A4068C00D31D53 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		F6D56F9320A407B000D31D53 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
@@ -101,6 +106,11 @@
 		F6D56FA420A40C4E00D31D53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F6D56FA620A416DD00D31D53 /* PictureFrameSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureFrameSecond.swift; sourceTree = "<group>"; };
 		F6D56FA820A416DE00D31D53 /* PictureFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureFrame.swift; sourceTree = "<group>"; };
+		F6D56FAC20AC048C00D31D53 /* DataModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModule.swift; sourceTree = "<group>"; };
+		F6D56FAD20AC048D00D31D53 /* LocalDataModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDataModule.swift; sourceTree = "<group>"; };
+		F6D56FB020AC058C00D31D53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F6D56FB220AC0E3400D31D53 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
+		F6D56FB320AC0E3400D31D53 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +134,7 @@
 				F67BA22020A3508400241812 /* GoogleMapsCore.framework in Frameworks */,
 				F67BA22120A3508400241812 /* GoogleMaps.framework in Frameworks */,
 				F67BA21B20A3505200241812 /* GoogleMapsBase.framework in Frameworks */,
+				DEC1039D727A28BB889E1290 /* Pods_Pinture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +155,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC5F42D36E5242D8D0B22BBA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6595F6B917E5F68481DCD630 /* Pods-Pinture.debug.xcconfig */,
+				CDA042F4F070586812EAD83A /* Pods-Pinture.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F67950BF208843C6000F7548 = {
 			isa = PBXGroup;
 			children = (
@@ -154,12 +174,14 @@
 				F67950CA208843C6000F7548 /* Pinture */,
 				F67BA21720A34EE800241812 /* Pinture.app */,
 				F67BA22420A3515B00241812 /* Frameworks */,
+				BC5F42D36E5242D8D0B22BBA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		F67950CA208843C6000F7548 /* Pinture */ = {
 			isa = PBXGroup;
 			children = (
+				F6D56FB020AC058C00D31D53 /* GoogleService-Info.plist */,
 				F6D56FA320A40C3900D31D53 /* Data */,
 				F6D56F9C20A40A7900D31D53 /* Utils */,
 				F6D56F9520A40A3900D31D53 /* UI Elements */,
@@ -193,6 +215,7 @@
 				F67BA22920A3516F00241812 /* CoreGraphics.framework */,
 				F67BA22720A3516500241812 /* CoreData.framework */,
 				F67BA22520A3515B00241812 /* Accelerate.framework */,
+				3FE6C8357322DD20494266DB /* Pods_Pinture.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -231,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				F6D56FA420A40C4E00D31D53 /* DataManager.swift */,
+				F6D56FAC20AC048C00D31D53 /* DataModule.swift */,
+				F6D56FAD20AC048D00D31D53 /* LocalDataModule.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -242,9 +267,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F67950F0208843C7000F7548 /* Build configuration list for PBXNativeTarget "Pinture" */;
 			buildPhases = (
+				0F8DDBEE33AE6E59DB5D6689 /* [CP] Check Pods Manifest.lock */,
 				F67950C4208843C6000F7548 /* Sources */,
 				F67950C5208843C6000F7548 /* Frameworks */,
 				F67950C6208843C6000F7548 /* Resources */,
+				C4F639646D26F0F8EC035E82 /* [CP] Embed Pods Frameworks */,
+				B88580D6982B705FA115B936 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,7 +298,7 @@
 			);
 			name = PintureTests;
 			productName = PintureTests;
-			productReference = F6D56F8C20A4023600D31D53 /* PintureTests.xctest */;
+			productReference = F6D56FB220AC0E3400D31D53 /* PintureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F67950E6208843C7000F7548 /* PintureUITests */ = {
@@ -288,7 +316,7 @@
 			);
 			name = PintureUITests;
 			productName = PintureUITests;
-			productReference = F6D56F8D20A4023600D31D53 /* PintureUITests.xctest */;
+			productReference = F6D56FB320AC0E3400D31D53 /* PintureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -344,6 +372,7 @@
 				F6D56F8F20A402C800D31D53 /* art.scnassets in Resources */,
 				F67950D1208843C6000F7548 /* Main.storyboard in Resources */,
 				F67BA22320A3511500241812 /* GoogleMaps.bundle in Resources */,
+				F6D56FB120AC058C00D31D53 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +392,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F8DDBEE33AE6E59DB5D6689 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pinture-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B88580D6982B705FA115B936 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pinture/Pods-Pinture-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pinture/Pods-Pinture-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4F639646D26F0F8EC035E82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pinture/Pods-Pinture-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pinture/Pods-Pinture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F67950C4208843C6000F7548 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -376,8 +470,10 @@
 				F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */,
 				F6D56F9920A40A5D00D31D53 /* Gesture.swift in Sources */,
 				F6D56FA120A40A8C00D31D53 /* CameraController.swift in Sources */,
+				F6D56FAE20AC048D00D31D53 /* DataModule.swift in Sources */,
 				F6D56F9120A4068C00D31D53 /* PhotoLibraryViewController.swift in Sources */,
 				F6D56F9B20A40A5D00D31D53 /* FocusSquare.swift in Sources */,
+				F6D56FAF20AC048D00D31D53 /* LocalDataModule.swift in Sources */,
 				F6D56FAB20A416DE00D31D53 /* PictureFrame.swift in Sources */,
 				F6D56FA020A40A8C00D31D53 /* Utilities.swift in Sources */,
 				F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */,
@@ -552,6 +648,7 @@
 		};
 		F67950F1208843C7000F7548 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6595F6B917E5F68481DCD630 /* Pods-Pinture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -574,6 +671,7 @@
 		};
 		F67950F2208843C7000F7548 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDA042F4F070586812EAD83A /* Pods-Pinture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

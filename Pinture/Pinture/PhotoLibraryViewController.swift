@@ -2,7 +2,7 @@
 //  PhotoLibraryViewController.swift
 //  Pinture
 //
-//  Created by 고원섭 on 2018. 5. 10..
+//  Created by Team7 on 2018. 5. 10..
 //  Copyright © 2018년 Sogang. All rights reserved.
 //
 
@@ -40,7 +40,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, 
 
         btnTitle.setTitle("사진", for: .normal)
         
-        
+        DataManager.sharedInstance.viewState = .photoLibrary
         showAnimate()
     }
     

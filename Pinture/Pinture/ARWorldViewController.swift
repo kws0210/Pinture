@@ -14,10 +14,13 @@ import Photos
 
 class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
+    @objc let locationManager = CLLocationManager()
     var currentLatitude, currentLongitude : CLLocationDegrees?
     var showingObjectSequenceList : NSMutableArray = []
     var virtualObjectList : [VirtualObject] = []
     var photoLibraryViewController : PhotoLibraryViewController?
+    var inputMessageViewController : InputMessageViewController?
+    let networkQueue = OperationQueue()
 
     
     @IBOutlet weak var btnStop: UIButton!
@@ -27,16 +30,116 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+        
+        showingObjectSequenceList.removeAllObjects()
+        DataManager.sharedInstance.cntDownloadingMsgImage = 0
         
         setupSceneView()
+        setupUIControls()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onTouchBtnStop(_ sender: Any) {
+        var originNodeCount = 0
+        for msgInfo in DataManager.sharedInstance.msgInfoList {
+            if msgInfo.state == 0 {
+                originNodeCount += 1
+            }
+        }
+        
+        guard originNodeCount != DataManager.sharedInstance.msgInfoList.count else {
+            self.networkQueue.cancelAllOperations()
+            self.goToMapViewController()
+            return
+        }
+        
+        self.showExitAlertView()
+    }
+    
+    @IBAction func onTouchBtnPlus(_ sender: Any) {
+        
+        
+        let photoLibraryVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "photoLibrary") as! PhotoLibraryViewController
+        self.addChildViewController(photoLibraryVc)
+        photoLibraryVc.view.frame = self.view.frame
+        self.photoLibraryViewController = photoLibraryVc
+        
+        self.view.addSubview(self.photoLibraryViewController!.view)
+        self.photoLibraryViewController!.didMove(toParentViewController: self)
+        
+        
+    }
+    
+    @IBAction func onTouchBtnSave(_ sender: Any) {
+        virtualObject?.index = DataManager.sharedInstance.msgInfoList.count
+        if DataManager.sharedInstance.isVideoMode {
+            DataManager.sharedInstance.msgInfoList.append(
+                ( DataManager.sharedInstance.dataModule.currentSequence
+                    , DataManager.sharedInstance.currentWorldInfo!.world_sequence
+                    , currentLatitude!, currentLongitude!
+                    , virtualObject!.position.x, virtualObject!.position.y, virtualObject!.position.z
+                    , virtualObject!.eulerAngles.x, virtualObject!.eulerAngles.y, virtualObject!.eulerAngles.z
+                    , virtualObject!.scale.x, virtualObject!.scale.y, virtualObject!.scale.z
+                    , virtualObject!.contentsType
+                    , virtualObject!.pickedVideoUrl
+                    , virtualObject!.pickedImage
+                    , virtualObject!.pickedVideo
+                    , virtualObject!.extensionName
+                    , 1))
+        } else {
+            DataManager.sharedInstance.msgInfoList.append(
+                ( DataManager.sharedInstance.dataModule.currentSequence
+                    , DataManager.sharedInstance.currentWorldInfo!.world_sequence
+                    , currentLatitude!, currentLongitude!
+                    , virtualObject!.position.x, virtualObject!.position.y, virtualObject!.position.z
+                    , virtualObject!.eulerAngles.x, virtualObject!.eulerAngles.y, virtualObject!.eulerAngles.z
+                    , virtualObject!.scale.x, virtualObject!.scale.y, virtualObject!.scale.z
+                    , virtualObject!.contentsType
+                    , URL(string: "http://www.naver.com" )!
+                    , virtualObject!.pickedImage
+                    , virtualObject!.pickedVideo
+                    , virtualObject!.extensionName
+                    , 1))
+        }
+        DataManager.sharedInstance.pickedImage = nil
+        virtualObject?.sequence = DataManager.sharedInstance.dataModule.currentSequence
+        
+        if virtualObject is PictureFrame {
+            let object = virtualObject as! PictureFrame
+            virtualObjectList.append(object)
+        } else if virtualObject is PictureFrameSecond {
+            let object = virtualObject as! PictureFrameSecond
+            virtualObjectList.append(object)
+        }
+        
+        virtualObject = nil
+        btnSave.isHidden = true
+        btnDelete.isHidden = true
+        DataManager.sharedInstance.dataModule.currentSequence += 1
+    }
+    
+    @IBAction func onTouchBtnDelete(_ sender: Any) {
+        resetVirtualObject()
+        DispatchQueue.main.async {
+            self.btnSave.isHidden = true
+            self.btnDelete.isHidden = true
+        }
+        self.playSound(name: "delete")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,6 +196,26 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         }
     }
     
+    func setupUIControls() {
+        btnPlus.setImage(#imageLiteral(resourceName: "add"), for: [])
+        btnPlus.setImage(#imageLiteral(resourceName: "addPressed"), for: [.highlighted])
+        
+        btnStop.layer.cornerRadius = btnStop.bounds.size.width/2;
+        btnStop.layer.masksToBounds = true;
+        
+        let photoLibraryVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "photoLibrary") as! PhotoLibraryViewController
+        self.addChildViewController(photoLibraryVc)
+        photoLibraryVc.view.frame = self.view.frame
+        self.photoLibraryViewController = photoLibraryVc
+        
+        let inputMessageVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputMessage") as! InputMessageViewController
+        self.addChildViewController(inputMessageVc)
+        inputMessageVc.view.frame = self.view.frame
+        self.inputMessageViewController = inputMessageVc
+        
+        
+    }
+    
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -102,22 +225,6 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             // If light estimation is enabled, update the intensity of the model's lights and the environment map
             self.sceneView?.scene.lightingEnvironment.intensity = 25
         }
-    }
-    
-    
-    
-    @IBAction func onTouchBtnStop(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func onTouchBtnPlus(_ sender: Any) {
-        let photoLibraryVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "photoLibrary") as! PhotoLibraryViewController
-        self.addChildViewController(photoLibraryVc)
-        photoLibraryVc.view.frame = self.view.frame
-        self.photoLibraryViewController = photoLibraryVc
-        
-        self.view.addSubview(self.photoLibraryViewController!.view)
-        self.photoLibraryViewController!.didMove(toParentViewController: self)
     }
     
     // MARK: - Gesture Recognizers
@@ -409,26 +516,6 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         })
     }
     
-    func goToMapViewController() {
-        
-        let presentingViewController = self.presentingViewController
-        self.dismiss(animated: false, completion: {
-            presentingViewController!.dismiss(animated: true, completion: {})
-        })
-    }
-    
-    
-    func showPermissionDeniedAlertView(title: String, message: String, completionHandler: (() -> Void)?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: { action in
-            if action.style == .default{
-                completionHandler?()
-            }
-        }))
-        self.present(alert, animated: true)
-    }
-    
-    
     func loadVirtualObject() {
         guard let image     = DataManager.sharedInstance.pickedImage            else {return}
         guard let ext       = DataManager.sharedInstance.pickedExtensionName    else {return}
@@ -441,18 +528,20 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             self.isLoadingObject = true
             
             
-                var pictureObject : VirtualObject
-                if image.size.width < image.size.height {
-                    pictureObject  = PictureFrame(pickedImage: image, extensionName: ext)
-                } else {
-                    pictureObject  = PictureFrameSecond(pickedImage: image, extensionName: ext)
-                }
-                pictureObject.viewController = self
-                self.virtualObject = pictureObject
+            var pictureObject : VirtualObject
+            if image.size.width < image.size.height {
+                pictureObject  = PictureFrame(pickedImage: image, extensionName: ext)
+            } else {
+                pictureObject  = PictureFrameSecond(pickedImage: image, extensionName: ext)
+            }
+            pictureObject.viewController = self
+            self.virtualObject = pictureObject
                 
-                pictureObject.loadModel()
+            pictureObject.loadModel()
             
             DispatchQueue.main.async {
+                self.btnSave.isHidden = false
+                self.btnDelete.isHidden = false
                 // Immediately place the object in 3D space.
                 self.setNewVirtualObjectPosition( SCNVector3(0, 0, 1) )
                 
@@ -501,8 +590,144 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         }
     }
     
+    // MARK: - Current Location
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        
+        currentLatitude     = locValue.latitude
+        currentLongitude    = locValue.longitude
+        
+    }
+    
     override func viewDidLayoutSubviews() {
-        loadVirtualObject()
+        switch DataManager.sharedInstance.viewState {
+        case .InputMessage:
+            if DataManager.sharedInstance.currentWorldInfo?.message != "" {
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy.MM.dd"
+                DataManager.sharedInstance.currentWorldInfo?.time = formatter.string(from: date)
+                self.uploadWorld()
+            }
+            break
+        case .photoLibrary:
+            if DataManager.sharedInstance.pickedImage == nil {
+                resetVirtualObject()
+                DispatchQueue.main.async {
+                    self.btnSave.isHidden = true
+                    self.btnDelete.isHidden = true
+                }
+            } else {
+                loadVirtualObject()
+            }
+            break
+        case .AR:
+            break
+        case .ImageDetail:
+            break
+        case .ImageDetailSaved:
+            break
+        }
+    }
+    
+    var player: AVAudioPlayer?
+    
+    func playSound(name : String) {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: url)
+            guard let player = player else { return }
+            
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    func goToMapViewController() {
+        
+        DataManager.sharedInstance.currentWorldIndex = -1
+        
+        let presentingViewController = self.presentingViewController
+        self.dismiss(animated: false, completion: {
+            presentingViewController!.dismiss(animated: true, completion: {})
+        })
+    }
+    
+    
+    func showPermissionDeniedAlertView(title: String, message: String, completionHandler: (() -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: { action in
+            if action.style == .default{
+                completionHandler?()
+            }
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    func saveInfo() {
+        
+        if DataManager.sharedInstance.currentWorldIndex == -1 {
+            let inputMessageVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputMessage") as! InputMessageViewController
+            self.addChildViewController(inputMessageVc)
+            inputMessageVc.view.frame = self.view.frame
+            self.inputMessageViewController = inputMessageVc
+            self.view.addSubview(self.inputMessageViewController!.view)
+            self.inputMessageViewController!.didMove(toParentViewController: self)
+        } else {
+            self.uploadMsg()
+        }
+    }
+    
+    func uploadWorld() {
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        uploadWorldInfo(viewController: self, completionHandler: {
+            self.goToMapViewController()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        })
+    }
+    
+    func uploadMsg() {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        uploadMsgInfo(viewController: self, completionHandler: {
+            self.goToMapViewController()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        })
+    }
+    
+    func showExitAlertView() {
+        let alert = UIAlertController(title: "", message: "월드를 저장하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "저장", style: UIAlertActionStyle.default, handler: { action in
+            if action.style == .default{
+                self.saveInfo()
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "저장 안함", style: UIAlertActionStyle.default, handler: { action in
+            if action.style == .default{
+                self.goToMapViewController()
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: UIAlertActionStyle.cancel, handler: { action in
+            alert.dismiss(animated: true, completion: {})
+        }))
+        self.present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
+    }
+    
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

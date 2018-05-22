@@ -33,6 +33,7 @@
 		F6D56FB920AC121200D31D53 /* StartingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FB820AC121200D31D53 /* StartingLocationViewController.swift */; };
 		F6D56FBB20AC124A00D31D53 /* WorldListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FBA20AC124900D31D53 /* WorldListViewController.swift */; };
 		F6D56FBD20AC127E00D31D53 /* WorldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FBC20AC127E00D31D53 /* WorldTableViewCell.swift */; };
+		F6D56FC120AC466300D31D53 /* InputMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D56FC020AC466300D31D53 /* InputMessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		F6D56FBC20AC127E00D31D53 /* WorldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTableViewCell.swift; sourceTree = "<group>"; };
 		F6D56FBE20AC3A5600D31D53 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
 		F6D56FBF20AC3A5600D31D53 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
+		F6D56FC020AC466300D31D53 /* InputMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMessageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				F6D56FB820AC121200D31D53 /* StartingLocationViewController.swift */,
 				F6D56FBA20AC124900D31D53 /* WorldListViewController.swift */,
 				F675278020A36AAF0078F266 /* ARWorldViewController.swift */,
+				F6D56FC020AC466300D31D53 /* InputMessageViewController.swift */,
 				F6D56F9020A4068C00D31D53 /* PhotoLibraryViewController.swift */,
 				F67950CF208843C6000F7548 /* Main.storyboard */,
 				F67950D2208843C7000F7548 /* Assets.xcassets */,
@@ -408,6 +411,7 @@
 			files = (
 				F6D56F9420A407B000D31D53 /* VirtualObject.swift in Sources */,
 				F6D56FA520A40C4E00D31D53 /* DataManager.swift in Sources */,
+				F6D56FC120AC466300D31D53 /* InputMessageViewController.swift in Sources */,
 				F6D56FA220A40A8C00D31D53 /* ImageCollectionViewCell.swift in Sources */,
 				F6D56FA920A416DE00D31D53 /* PictureFrameSecond.swift in Sources */,
 				F67950CE208843C6000F7548 /* MapViewController.swift in Sources */,

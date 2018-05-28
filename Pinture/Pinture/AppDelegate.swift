@@ -30,6 +30,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let strUrl = url.absoluteString
+        
+        if strUrl.starts(with: "line3rdp") {
+            return LineSDKLogin.sharedInstance().handleOpen(url)
+        } else {
+            var path = url.path
+            path.removeFirst()
+            guard let openParam = Int(path) else {return false}
+            self.openParam = openParam
+            
+            if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+                if let window = self.window, let rootViewController = window.rootViewController {
+                    var currentController = rootViewController
+                    while let presentedController = currentController.presentedViewController {
+                        currentController = presentedController
+                    }
+                    currentController.present(controller, animated: true, completion: nil)
+                }
+            }
+            
+            return true
+        }
+        
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

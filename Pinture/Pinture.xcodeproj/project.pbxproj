@@ -57,6 +57,8 @@
 		3FE6C8357322DD20494266DB /* Pods_Pinture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595F6B917E5F68481DCD630 /* Pods-Pinture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pinture/Pods-Pinture.debug.xcconfig"; sourceTree = "<group>"; };
 		CDA042F4F070586812EAD83A /* Pods-Pinture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinture.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinture/Pods-Pinture.release.xcconfig"; sourceTree = "<group>"; };
+		F654393820B6FE5700415123 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
+		F654393920B6FE5700415123 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 		F675278020A36AAF0078F266 /* ARWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldViewController.swift; sourceTree = "<group>"; };
 		F67950CB208843C6000F7548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67950CD208843C6000F7548 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -84,8 +86,6 @@
 		F6D56FB820AC121200D31D53 /* StartingLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingLocationViewController.swift; sourceTree = "<group>"; };
 		F6D56FBA20AC124900D31D53 /* WorldListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListViewController.swift; sourceTree = "<group>"; };
 		F6D56FBC20AC127E00D31D53 /* WorldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTableViewCell.swift; sourceTree = "<group>"; };
-		F6D56FBE20AC3A5600D31D53 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
-		F6D56FBF20AC3A5600D31D53 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
 		F6D56FC020AC466300D31D53 /* InputMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMessageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,7 +246,7 @@
 			);
 			name = PintureTests;
 			productName = PintureTests;
-			productReference = F6D56FBE20AC3A5600D31D53 /* PintureTests.xctest */;
+			productReference = F654393820B6FE5700415123 /* PintureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F67950E6208843C7000F7548 /* PintureUITests */ = {
@@ -264,7 +264,7 @@
 			);
 			name = PintureUITests;
 			productName = PintureUITests;
-			productReference = F6D56FBF20AC3A5600D31D53 /* PintureUITests.xctest */;
+			productReference = F654393920B6FE5700415123 /* PintureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */

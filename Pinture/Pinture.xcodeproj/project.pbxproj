@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DEC1039D727A28BB889E1290 /* Pods_Pinture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE6C8357322DD20494266DB /* Pods_Pinture.framework */; };
+		F654393B20BBF4D300415123 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F654393A20BBF4D300415123 /* LoginViewController.swift */; };
 		F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F675278020A36AAF0078F266 /* ARWorldViewController.swift */; };
 		F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CB208843C6000F7548 /* AppDelegate.swift */; };
 		F67950CE208843C6000F7548 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CD208843C6000F7548 /* MapViewController.swift */; };
@@ -59,6 +60,8 @@
 		CDA042F4F070586812EAD83A /* Pods-Pinture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinture.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinture/Pods-Pinture.release.xcconfig"; sourceTree = "<group>"; };
 		F654393820B6FE5700415123 /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
 		F654393920B6FE5700415123 /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
+		F654393A20BBF4D300415123 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F654393C20BC00EC00415123 /* Pinture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pinture.entitlements; sourceTree = "<group>"; };
 		F675278020A36AAF0078F266 /* ARWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldViewController.swift; sourceTree = "<group>"; };
 		F67950CB208843C6000F7548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67950CD208843C6000F7548 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -138,11 +141,13 @@
 		F67950CA208843C6000F7548 /* Pinture */ = {
 			isa = PBXGroup;
 			children = (
+				F654393C20BC00EC00415123 /* Pinture.entitlements */,
 				F6D56FA320A40C3900D31D53 /* Data */,
 				F6D56F9C20A40A7900D31D53 /* Utils */,
 				F6D56F9520A40A3900D31D53 /* UI Elements */,
 				F6D56F9220A4078000D31D53 /* Virtual Objects */,
 				F67950CB208843C6000F7548 /* AppDelegate.swift */,
+				F654393A20BBF4D300415123 /* LoginViewController.swift */,
 				F67950CD208843C6000F7548 /* MapViewController.swift */,
 				F6D56FB820AC121200D31D53 /* StartingLocationViewController.swift */,
 				F6D56FBA20AC124900D31D53 /* WorldListViewController.swift */,
@@ -279,6 +284,11 @@
 				TargetAttributes = {
 					F67950C7208843C6000F7548 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					F67950DB208843C7000F7548 = {
 						CreatedOnToolsVersion = 9.3;
@@ -419,6 +429,7 @@
 				F6D56FBD20AC127E00D31D53 /* WorldTableViewCell.swift in Sources */,
 				F6D56F9920A40A5D00D31D53 /* Gesture.swift in Sources */,
 				F6D56FA120A40A8C00D31D53 /* CameraController.swift in Sources */,
+				F654393B20BBF4D300415123 /* LoginViewController.swift in Sources */,
 				F6D56FAE20AC048D00D31D53 /* DataModule.swift in Sources */,
 				F6D56FBB20AC124A00D31D53 /* WorldListViewController.swift in Sources */,
 				F6D56F9120A4068C00D31D53 /* PhotoLibraryViewController.swift in Sources */,
@@ -603,6 +614,7 @@
 			baseConfigurationReference = 6595F6B917E5F68481DCD630 /* Pods-Pinture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pinture/Pinture.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y3Z2Z567H;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -627,6 +639,7 @@
 			baseConfigurationReference = CDA042F4F070586812EAD83A /* Pods-Pinture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pinture/Pinture.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y3Z2Z567H;
 				FRAMEWORK_SEARCH_PATHS = (

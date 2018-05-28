@@ -18,6 +18,18 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>pinture</string>
+				<string>line3rdp.$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			</array>
+		</dict>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -26,6 +38,12 @@
 	<string>Main</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>line</string>
+		<string>lineauth</string>
+		<string>line3rdp.$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>This application will use the camera for Augmented Reality.</string>
 	<key>NSLocationUsageDescription</key>
@@ -36,6 +54,11 @@
 	<string>This application will use the photo library for Augmented Reality.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
+	<key>LineSDKConfig</key>
+	<dict>
+		<key>ChannelID</key>
+		<string>1528503257</string>
+	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

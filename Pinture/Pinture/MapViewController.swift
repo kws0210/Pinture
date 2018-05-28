@@ -142,12 +142,65 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
         
     }
     
+    
+    
     func showMessageAlertView(message : String, completionHandler : (()->Void)!) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: { action in
             print("showMessageAlertView")
             completionHandler()
+        }))
+        self.present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+        })
+    }
+    
+    func showAddWorldAlertView(worldSequence : Int) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate;
+        let alert = UIAlertController(title: "", message: "공유받은 월드를 저장하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "예", style: UIAlertActionStyle.default, handler: { action in
+            if action.style == .default{
+                self.activityIndicatorView.startAnimating()
+                UIApplication.shared.beginIgnoringInteractionEvents()
+                
+                addWorldInfo(worldSequece : worldSequence, completionHandler: {
+                    appDelegate.openParam = 0
+                    self.initiateData()
+                    self.initiateWorldInfoList()
+                    self.activityIndicatorView.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                })
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "아니요", style: UIAlertActionStyle.cancel, handler: { action in
+            if action.style == .cancel{
+                appDelegate.openParam = 0
+            }
+        }))
+        self.present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+        })
+    }
+    
+    func showDeleteAlertView(index : Int) {
+        let alert = UIAlertController(title: "", message: "\'\(DataManager.sharedInstance.worldInfoList[index].message)\'월드를 삭제하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "예", style: UIAlertActionStyle.default, handler: { action in
+            if action.style == .default{
+                self.activityIndicatorView.startAnimating()
+                UIApplication.shared.beginIgnoringInteractionEvents()
+                deleteWorldInfo(index: index, completionHandler: {
+                    self.initiateData()
+                    self.initiateWorldInfoList()
+                    self.activityIndicatorView.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                })
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "아니요", style: UIAlertActionStyle.cancel, handler: { action in
+            if action.style == .cancel{
+                
+            }
         }))
         self.present(alert, animated: true, completion: {
             alert.view.superview?.isUserInteractionEnabled = true
@@ -175,6 +228,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
         self.present(alert, animated: true, completion: {
             alert.view.superview?.isUserInteractionEnabled = true
         })
+    }
+    
+    func showInputMessagePopup(index : Int) {
+        let inputMessageVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputMessage") as! InputMessageViewController
+        self.addChildViewController(inputMessageVc)
+        inputMessageVc.view.frame = self.view.frame
+        self.inputMessageViewController = inputMessageVc
+        self.view.addSubview(self.inputMessageViewController!.view)
+        self.inputMessageViewController!.didMove(toParentViewController: self)
+        self.inputMessageViewController?.msgInput.text = DataManager.sharedInstance.worldInfoList[index].message
     }
     
     @objc func alertControllerBackgroundTapped()
@@ -242,11 +305,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let del = UITableViewRowAction(style: .normal , title: "삭제") { action, index in
-            
+            self.showDeleteAlertView(index: indexPath.row)
         }
         
         let edit = UITableViewRowAction(style: .destructive, title: "수정") { action, index in
-            
+            self.showInputMessagePopup(index: indexPath.row)
             DataManager.sharedInstance.currentWorldIndex = indexPath.row
         }
         edit.backgroundColor = UIColor.lightGray

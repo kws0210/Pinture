@@ -502,7 +502,7 @@
                                     <color key="titleColor" red="1" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="WTj-PA-1lY" kind="presentation" id="B4h-ri-51k"/>
+                                    <segue destination="WTj-PA-1lY" kind="presentation" id="EMH-jG-FlM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1A-aT-aho">

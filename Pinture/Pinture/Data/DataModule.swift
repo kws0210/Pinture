@@ -149,7 +149,7 @@ class DataModule {
                 uploadMsgInfo(viewController : viewController, completionHandler: {
                     let jsonString = formatWorldData(
                         world_sequence: worldSequence, latitude: latitude, longitude: longitude
-                        , imageUrl: "gs://timecapsule-d9e4a.appspot.com/hint/" + fileName, message: message, time: time)
+                        , imageUrl: "gs://pinture-203616.appspot.com/hint/" + fileName, message: message, time: time)
                     
                     DataManager.sharedInstance.uploadingJSONList.append(jsonString)
                     self.saveSpecificData("worldInfoList")
@@ -191,7 +191,7 @@ class DataModule {
                                 , scale_x: msgInfo.scale_x, scale_y: msgInfo.scale_y, scale_z: msgInfo.scale_z
                                 , extensionName: msgInfo.extensionName!
                                 , contentsType: msgInfo.contentsType
-                                , contentsUrl: "gs://timecapsule-d9e4a.appspot.com/picture/" + fileName)
+                                , contentsUrl: "gs://pinture-203616.appspot.com/picture/" + fileName)
                             
                             DataManager.sharedInstance.uploadingJSONList.append(jsonString)
                             DataManager.sharedInstance.cntUploadingMsgImage -= 1
@@ -232,7 +232,7 @@ class DataModule {
                                         , scale_x: msgInfo.scale_x, scale_y: msgInfo.scale_y, scale_z: msgInfo.scale_z
                                         , extensionName: msgInfo.extensionName!
                                         , contentsType: msgInfo.contentsType
-                                        , contentsUrl: "gs://timecapsule-d9e4a.appspot.com/video/" + fileName)
+                                        , contentsUrl: "gs://pinture-203616.appspot.com/video/" + fileName)
                                     
                                     DataManager.sharedInstance.uploadingJSONList.append(jsonString)
                                     DataManager.sharedInstance.cntUploadingMsgImage -= 1

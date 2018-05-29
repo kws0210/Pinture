@@ -22,6 +22,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var defaultTableView: UIView!
     
+    @IBAction func returnUnwindAction(unwindSegue: UIStoryboardSegue) {}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -140,6 +142,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
     
     func checkOpenParam() {
         
+    }
+    
+    @IBAction func onTouchBtnLogout(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "lineId")
+        UserDefaults.standard.removeObject(forKey: "accessToken")
+        
+        self.dismiss(animated: true, completion: {})
     }
     
     

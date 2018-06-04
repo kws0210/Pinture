@@ -28,7 +28,7 @@ class VirtualObject: SCNNode {
     @objc var modelLoaded: Bool = false
     @objc var virtualObjectScene : SCNScene?
     
-    @objc var viewController: ARWorldViewController?
+    @objc var viewController: ARViewController?
     
     @objc init(pickedImage : UIImage, extensionName : String) {
         super.init()

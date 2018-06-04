@@ -251,6 +251,60 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         }
     }
     
+    // MARK: - Current Location
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        
+        currentLatitude     = locValue.latitude
+        currentLongitude    = locValue.longitude
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        switch DataManager.sharedInstance.viewState {
+        case .ImageDetail:
+            guard let imageDetailVc = self.imageDetailViewController else { return }
+            if !self.view.subviews.contains(imageDetailVc.view) {
+                self.virtualObject = nil
+            }
+            break
+        case .ImageDetailSaved:
+            print("index : ", virtualObject?.index)
+            if DataManager.sharedInstance.msgInfoList[virtualObject!.index].state == 1 {
+                DataManager.sharedInstance.msgInfoList[virtualObject!.index].state = 0
+                print("index : new \(virtualObject?.index)")
+            } else {
+                DataManager.sharedInstance.msgInfoList[virtualObject!.index].state = -1
+                print("index : old \(virtualObject?.index)")
+            }
+            self.resetVirtualObject()
+            break
+        case .InputMessage:
+            if DataManager.sharedInstance.currentWorldInfo?.message != "" {
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy.MM.dd"
+                DataManager.sharedInstance.currentWorldInfo?.time = formatter.string(from: date)
+                self.uploadWorld()
+            }
+            break
+        case .photoLibrary:
+            if DataManager.sharedInstance.pickedImage == nil {
+                resetVirtualObject()
+                DispatchQueue.main.async {
+                    self.btnSave.isHidden = true
+                    self.btnDelete.isHidden = true
+                }
+            } else {
+                loadVirtualObject()
+            }
+            break
+        case .AR:
+            break;
+        }
+    }
+    
     // MARK: - Gesture Recognizers
     
     var currentGesture: Gesture?
@@ -611,47 +665,6 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             pictureObject.scale = scale
             
             self.sceneView?.scene.rootNode.addChildNode(pictureObject)
-        }
-    }
-    
-    // MARK: - Current Location
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        
-        currentLatitude     = locValue.latitude
-        currentLongitude    = locValue.longitude
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        switch DataManager.sharedInstance.viewState {
-        case .InputMessage:
-            if DataManager.sharedInstance.currentWorldInfo?.message != "" {
-                let date = Date()
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy.MM.dd"
-                DataManager.sharedInstance.currentWorldInfo?.time = formatter.string(from: date)
-                self.uploadWorld()
-            }
-            break
-        case .photoLibrary:
-            if DataManager.sharedInstance.pickedImage == nil {
-                resetVirtualObject()
-                DispatchQueue.main.async {
-                    self.btnSave.isHidden = true
-                    self.btnDelete.isHidden = true
-                }
-            } else {
-                loadVirtualObject()
-            }
-            break
-        case .AR:
-            break
-        case .ImageDetail:
-            break
-        case .ImageDetailSaved:
-            break
         }
     }
     

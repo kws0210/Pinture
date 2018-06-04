@@ -45,6 +45,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let inputMessageVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputMessage") as! InputMessageViewController
         self.addChildViewController(inputMessageVc)
         inputMessageVc.view.frame = self.view.frame

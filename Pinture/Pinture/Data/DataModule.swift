@@ -205,6 +205,17 @@ class DataModule {
                             }
                         }
                     }
+                    uploadTask.observe(.progress) { snapshot in
+                        let percentComplete = 100 * Int(snapshot.progress!.completedUnitCount)
+                            / Int(snapshot.progress!.totalUnitCount)
+                        
+                        viewController.updateCompletePercent(sequence : msgInfo.sequence, completionPercent : percentComplete)
+                        
+                    }
+                    
+                    uploadTask.observe(.success) { snapshot in
+                        viewController.updateComplete(sequence : msgInfo.sequence)
+                    }
                     
                 //video type
                 } else {
@@ -245,6 +256,17 @@ class DataModule {
                                         }
                                     }
                                 }
+                            }
+                            uploadTask.observe(.progress) { snapshot in
+                                let percentComplete = 100 * Int(snapshot.progress!.completedUnitCount)
+                                    / Int(snapshot.progress!.totalUnitCount)
+                                
+                                
+                                viewController.updateCompletePercent(sequence : msgInfo.sequence, completionPercent : percentComplete)
+                            }
+                            
+                            uploadTask.observe(.success) { snapshot in
+                                viewController.updateComplete(sequence : msgInfo.sequence)
                             }
                         } catch {
                             print(error)

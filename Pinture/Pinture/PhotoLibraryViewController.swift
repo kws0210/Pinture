@@ -37,14 +37,28 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, 
             self.assetThumbnailSize = CGSize(width: cellSize.width, height: cellSize.height)
             checkPhotoLibraryPermission()
         }
-
-        btnTitle.setTitle("사진", for: .normal)
+        if DataManager.sharedInstance.isVideoMode {
+            btnTitle.setTitle("동영상", for: .normal)
+        } else {
+            btnTitle.setTitle("사진", for: .normal)
+        }
         
         DataManager.sharedInstance.viewState = .photoLibrary
         showAnimate()
     }
     
-    
+    @IBAction func onTouchBtnTitle(_ sender: Any) {
+        if DataManager.sharedInstance.isVideoMode {
+            DataManager.sharedInstance.isVideoMode = false
+            DataManager.sharedInstance.pickedVideoUrl = nil
+            btnTitle.setTitle("사진", for: .normal)
+        } else {
+            DataManager.sharedInstance.isVideoMode = true
+            btnTitle.setTitle("동영상", for: .normal)
+        }
+        
+        self.loadPhotoLibrary()
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
@@ -80,7 +94,11 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, 
         
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false) ]
         
-        self.photosAsset = PHAsset.fetchAssets(with: .image, options: fetchOptions) as! PHFetchResult<AnyObject>
+        if DataManager.sharedInstance.isVideoMode {
+            self.photosAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions) as! PHFetchResult<AnyObject>
+        } else {
+            self.photosAsset = PHAsset.fetchAssets(with: .image, options: fetchOptions) as! PHFetchResult<AnyObject>
+        }
         
         self.collectionView!.reloadData()
         
@@ -131,7 +149,58 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, 
         
         
         
-        
+        if DataManager.sharedInstance.isVideoMode {
+            PHCachingImageManager().requestAVAsset(forVideo: asset, options: nil, resultHandler: { (videoAsset, audioMix, info) in
+                if videoAsset is AVComposition {
+                    let videoAsset = videoAsset as! AVComposition
+                    
+                    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                    let documentsDirectory: NSString? = paths.first as NSString?
+                    if documentsDirectory != nil {
+                        let random = Int(arc4random() % 1000)
+                        let pathToAppend = String(format: "mergeSlowMoVideo-%d.mov", random)
+                        let myPathDocs = documentsDirectory!.strings(byAppendingPaths: [pathToAppend])
+                        let myPath = myPathDocs.first
+                        if myPath != nil {
+                            let url = URL(fileURLWithPath: myPath!)
+                            let exporter = AVAssetExportSession(asset: videoAsset, presetName: AVAssetExportPresetHighestQuality)
+                            if exporter != nil {
+                                exporter!.outputURL = url
+                                exporter!.outputFileType = AVFileType.mov
+                                exporter!.shouldOptimizeForNetworkUse = true
+                                exporter!.exportAsynchronously(completionHandler: {
+                                    DispatchQueue.main.async {
+                                        let url = exporter!.outputURL
+                                        if url != nil {
+                                            DataManager.sharedInstance.pickedVideoUrl = url
+                                            
+                                            PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width:1920, height:1280) , contentMode: .aspectFill, options: nil, resultHandler: { (result , info) in
+                                                
+                                                DataManager.sharedInstance.pickedImage = result as! UIImage
+                                                DataManager.sharedInstance.pickedExtensionName = "mov"
+                                                
+                                                self.removeAnimate()
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    }
+                } else if videoAsset is AVAsset {
+                    let videoAsset = videoAsset as! AVURLAsset
+                    DataManager.sharedInstance.pickedVideoUrl = videoAsset.url
+                    
+                    PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width:1280, height:1280) , contentMode: .aspectFill, options: nil, resultHandler: { (result , info) in
+                        
+                        DataManager.sharedInstance.pickedImage = result as! UIImage
+                        DataManager.sharedInstance.pickedExtensionName = videoAsset.url.pathExtension
+                        
+                        self.removeAnimate()
+                    })
+                }
+            })
+        } else {
             let options = PHImageRequestOptions()
             options.version = PHImageRequestOptionsVersion.current
             options.deliveryMode = .highQualityFormat
@@ -146,8 +215,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, 
                     
                 }
             })
-        
-        
+        }
     }
     
     

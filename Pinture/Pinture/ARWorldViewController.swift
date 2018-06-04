@@ -45,6 +45,19 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         showingObjectSequenceList.removeAllObjects()
         DataManager.sharedInstance.cntDownloadingMsgImage = 0
         
+        getMsgInfoList {
+            for msgInfo in DataManager.sharedInstance.msgInfoList {
+                self.loadVirtualObject(sequence: msgInfo.sequence , contentsType: msgInfo.contentsType, contentsUrl: msgInfo.contentsUrl
+                    , position: SCNVector3(msgInfo.position_x, msgInfo.position_y, msgInfo.position_z)
+                    , eulerAngles: SCNVector3(msgInfo.eulerAngles_x, msgInfo.eulerAngles_y, msgInfo.eulerAngles_z)
+                    , scale: SCNVector3(msgInfo.scale_x, msgInfo.scale_y, msgInfo.scale_z) )
+            }
+            
+            if DataManager.sharedInstance.msgInfoList.count > 0 {
+                self.playSound(name: "welcome")
+            }
+        }
+        
         setupSceneView()
         setupUIControls()
     }
@@ -122,9 +135,19 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         if virtualObject is PictureFrame {
             let object = virtualObject as! PictureFrame
             virtualObjectList.append(object)
+            self.pinAnimate(object : object)
         } else if virtualObject is PictureFrameSecond {
             let object = virtualObject as! PictureFrameSecond
             virtualObjectList.append(object)
+            self.pinAnimate(object : object)
+        } else if virtualObject is VideoFrameFirst {
+            let object = virtualObject as! VideoFrameFirst
+            virtualObjectList.append(object)
+            self.pinAnimate(object : object)
+        } else if virtualObject is VideoFrameSecond {
+            let object = virtualObject as! VideoFrameSecond
+            virtualObjectList.append(object)
+            self.pinAnimate(object : object)
         }
         
         virtualObject = nil
@@ -224,6 +247,7 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             
             // If light estimation is enabled, update the intensity of the model's lights and the environment map
             self.sceneView?.scene.lightingEnvironment.intensity = 25
+            self.playVideoObjectByDistance()
         }
     }
     

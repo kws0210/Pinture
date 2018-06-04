@@ -10,26 +10,32 @@ import UIKit
 import SceneKit
 import ARKit
 import GoogleMaps
+import FirebaseStorage
 import Photos
+import AVFoundation
 
-class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+class ARViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+    
+    @IBOutlet weak var btnPlus: UIButton!
+    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnStop: UIButton!
+    @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     
     @objc let locationManager = CLLocationManager()
     var currentLatitude, currentLongitude : CLLocationDegrees?
     var showingObjectSequenceList : NSMutableArray = []
     var virtualObjectList : [VirtualObject] = []
     var photoLibraryViewController : PhotoLibraryViewController?
+    
     var inputMessageViewController : InputMessageViewController?
+    var imageDetailViewController : ImageDetailViewController?
+    var uploadingImageCount = 0
     let networkQueue = OperationQueue()
-
-    
-    @IBOutlet weak var btnStop: UIButton!
-    @IBOutlet weak var btnDelete: UIButton!
-    @IBOutlet weak var btnSave: UIButton!
-    @IBOutlet weak var btnPlus: UIButton!
-    
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
         
@@ -44,7 +50,6 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         
         showingObjectSequenceList.removeAllObjects()
         DataManager.sharedInstance.cntDownloadingMsgImage = 0
-        
         getMsgInfoList {
             for msgInfo in DataManager.sharedInstance.msgInfoList {
                 self.loadVirtualObject(sequence: msgInfo.sequence , contentsType: msgInfo.contentsType, contentsUrl: msgInfo.contentsUrl
@@ -57,14 +62,8 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
                 self.playSound(name: "welcome")
             }
         }
-        
         setupSceneView()
         setupUIControls()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onTouchBtnStop(_ sender: Any) {
@@ -194,7 +193,7 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     }
     
     var screenCenter: CGPoint?
-    @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet var sceneView: ARSCNView!
     
     func setupSceneView() {
         
@@ -208,7 +207,7 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         sceneView?.scene.lightingEnvironment.intensity = 25
         
         DispatchQueue.main.async {
-            self.screenCenter = self.sceneView?.center
+            self.screenCenter = self.sceneView?.bounds.mid
         }
         
         if let camera = sceneView?.pointOfView?.camera {
@@ -217,6 +216,10 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             camera.exposureOffset = -1
             camera.minimumExposure = -1
         }
+        
+        
+        
+        
     }
     
     func setupUIControls() {
@@ -250,6 +253,10 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             self.playVideoObjectByDistance()
         }
     }
+    
+    
+    
+    
     
     // MARK: - Current Location
     
@@ -304,6 +311,15 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             break;
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // MARK: - Gesture Recognizers
     
@@ -428,6 +444,12 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         return newImage
     }
     
+    
+    
+    
+    
+    
+    
     func playVideoObjectByDistance() {
         let cam : ARCamera
         for node in self.sceneView.scene.rootNode.childNodes {
@@ -462,6 +484,10 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         }
     }
     
+    
+    
+    
+    
     // MARK: - Virtual Object Manipulation
     
     func displayVirtualObjectTransform() {
@@ -481,6 +507,9 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         if angleDegrees < 0 {
             angleDegrees += 360
         }
+        
+        let distance = String(format: "%.2f", distanceToUser)
+        let scale = String(format: "%.2f", object.scale.x)
     }
     
     func moveVirtualObjectToPosition(_ pos: SCNVector3?, _ instantly: Bool, _ filterPosition: Bool) {
@@ -600,6 +629,14 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     }
     
     func resetVirtualObject() {
+        if virtualObject is VideoFrame {
+            let video = virtualObject as! VideoFrame
+            video.player.pause()
+            video.player = nil
+        }
+        
+        DataManager.sharedInstance.pickedVideoUrl = nil
+        DataManager.sharedInstance.pickedExtensionName = nil
         DataManager.sharedInstance.pickedImage = nil
         virtualObject?.unloadModel()
         virtualObject?.removeFromParentNode()
@@ -668,15 +705,10 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         }
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        self.showPermissionDeniedAlertView(title : "세션 만료", message : "세션이 만료되어 홈 화면으로 이동합니다.", completionHandler: {
-            self.goToMapViewController()
-        })
-    }
-    
     func loadVirtualObject() {
         guard let image     = DataManager.sharedInstance.pickedImage            else {return}
         guard let ext       = DataManager.sharedInstance.pickedExtensionName    else {return}
+        let videoUrl  = DataManager.sharedInstance.pickedVideoUrl
         
         resetVirtualObject()
         
@@ -685,18 +717,40 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             
             self.isLoadingObject = true
             
-            
-            var pictureObject : VirtualObject
-            if image.size.width < image.size.height {
-                pictureObject  = PictureFrame(pickedImage: image, extensionName: ext)
-            } else {
-                pictureObject  = PictureFrameSecond(pickedImage: image, extensionName: ext)
-            }
-            pictureObject.viewController = self
-            self.virtualObject = pictureObject
+            if DataManager.sharedInstance.isVideoMode {
                 
-            pictureObject.loadModel()
-            
+                let video = AVAsset(url: videoUrl!)
+                guard let videoTrack = video.tracks(withMediaType: AVMediaType.video).first else {return}
+                let size = videoTrack.naturalSize
+                let txf = videoTrack.preferredTransform
+                let realVidSize = size.applying(txf)
+                
+                var object : VideoFrame!
+                if abs(realVidSize.width) < abs(realVidSize.height) {
+                    object = VideoFrameFirst(video: video, videoUrl: videoUrl!, extensionName: ext)
+                } else {
+                    object = VideoFrameSecond(video: video, videoUrl: videoUrl!, extensionName: ext)
+                }
+                
+                self.virtualObject = object
+                object.viewController = self
+                object.loadModel()
+                
+                object.player.play()
+                
+                
+            } else {
+                var pictureObject : VirtualObject
+                if image.size.width < image.size.height {
+                    pictureObject  = PictureFrame(pickedImage: image, extensionName: ext)
+                } else {
+                    pictureObject  = PictureFrameSecond(pickedImage: image, extensionName: ext)
+                }
+                pictureObject.viewController = self
+                self.virtualObject = pictureObject
+                
+                pictureObject.loadModel()
+            }
             DispatchQueue.main.async {
                 self.btnSave.isHidden = false
                 self.btnDelete.isHidden = false
@@ -724,14 +778,89 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         }
     }
     
+    func loadVirtualObject(sequence : Int, contentsType : Int, contentsUrl : URL, position : SCNVector3, eulerAngles : SCNVector3, scale : SCNVector3) {
+        // Load the content asynchronously.
+        DispatchQueue.global().async {
+            if self.showingObjectSequenceList.contains(sequence) {
+                return
+            }
+            self.showingObjectSequenceList.add(sequence)
+            
+            let index = DataManager.sharedInstance.msgInfoList.map{ $0.sequence }.index(of: sequence)!
+            if index >= DataManager.sharedInstance.msgInfoList.count {
+                self.tabBarController?.selectedIndex = 1
+            }
+            
+            
+            if DataManager.sharedInstance.msgInfoList[index].contentsType <= 10 {
+                
+                if DataManager.sharedInstance.msgInfoList[index].image == nil {
+                    self.networkQueue.addOperation {
+                        print("Image is downloading...")
+                        DispatchQueue.main.async {
+                            self.activityIndicatorView.startAnimating()
+                        }
+                        DataManager.sharedInstance.cntDownloadingMsgImage += 1
+                        
+                        
+                        // Define a download task. The download task will download the contents of the URL as a Data object and then you can do what you wish with that data.
+                        let urlSession = URLSession(configuration: .default)
+                        let downloadPicTask = urlSession.dataTask(with: contentsUrl) { (data, response, error) in
+                            
+                            
+                            // The download has finished.
+                            if let e = error {
+                                print("Error downloading cat picture: \(e)")
+                            } else {
+                                // No errors found.
+                                // It would be weird if we didn't have a response, so check for that too.
+                                if let res = response as? HTTPURLResponse {
+                                    if DataManager.sharedInstance.msgInfoList.count == 0 { return }
+                                    print("Downloaded cat picture with response code \(res.statusCode)")
+                                    if let contentsData = data {
+                                        
+                                        // Finally convert that Data into an image and do what you wish with it.
+                                        DataManager.sharedInstance.msgInfoList[index].image = UIImage(data: contentsData)
+                                        self.loadImageModel(index: index, image: DataManager.sharedInstance.msgInfoList[index].image!, position: position, eulerAngles: eulerAngles, scale: scale)
+                                        
+                                        DataManager.sharedInstance.cntDownloadingMsgImage -= 1
+                                        if DataManager.sharedInstance.cntDownloadingMsgImage == 0 {
+                                            DispatchQueue.main.async {
+                                                self.activityIndicatorView.stopAnimating()
+                                            }
+                                        }
+                                        
+                                        
+                                    } else {
+                                        print("Couldn't get image: Image is nil")
+                                    }
+                                } else {
+                                    print("Couldn't get response code for some reason")
+                                }
+                            }
+                        }
+                        
+                        downloadPicTask.resume()
+                    }
+                } else {
+                    // Finally convert that Data into an image and do what you wish with it.
+                    self.loadImageModel(index: index, image: DataManager.sharedInstance.msgInfoList[index].image!, position: position, eulerAngles: eulerAngles, scale: scale)
+                }
+            } else {
+                self.loadVideoModel(index: index, videoUrl: DataManager.sharedInstance.msgInfoList[index].contentsUrl, position: position, eulerAngles: eulerAngles, scale: scale)
+            }
+            
+        }
+    }
+    
     
     
     func loadImageModel(index : Int, image : UIImage, position : SCNVector3, eulerAngles : SCNVector3, scale : SCNVector3 ) {
         var pictureObject : VirtualObject
         if image.size.width < image.size.height {
-            pictureObject = PictureFrame(pickedImage: image, extensionName: DataManager.sharedInstance.pickedExtensionName!)
+            pictureObject = PictureFrame(pickedImage: image, extensionName: DataManager.sharedInstance.msgInfoList[index].extensionName!)
         } else {
-            pictureObject = PictureFrameSecond(pickedImage: image, extensionName: DataManager.sharedInstance.pickedExtensionName!)
+            pictureObject = PictureFrameSecond(pickedImage: image, extensionName: DataManager.sharedInstance.msgInfoList[index].extensionName!)
         }
         
         pictureObject.viewController = self
@@ -747,6 +876,74 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             self.sceneView?.scene.rootNode.addChildNode(pictureObject)
         }
     }
+    
+    func loadVideoModel(index : Int, videoUrl : URL, position : SCNVector3, eulerAngles : SCNVector3, scale : SCNVector3 ) {
+        
+        networkQueue.addOperation {
+            let video = AVAsset(url: videoUrl)
+            
+            if DataManager.sharedInstance.msgInfoList.count == 0 { return }
+            DataManager.sharedInstance.msgInfoList[index].video = video
+            
+            var object : VideoFrame!
+            if DataManager.sharedInstance.msgInfoList.count == 0 { return }
+            if DataManager.sharedInstance.msgInfoList[index].contentsType == 11 {
+                object = VideoFrameFirst(video: video, videoUrl: videoUrl, extensionName: DataManager.sharedInstance.msgInfoList[index].extensionName!)
+            } else {
+                object = VideoFrameSecond(video: video, videoUrl: videoUrl, extensionName: DataManager.sharedInstance.msgInfoList[index].extensionName!)
+            }
+            
+            
+            object.viewController = self
+            object.index = index
+            object.loadModel()
+            
+            DispatchQueue.main.async {
+                
+                object.position = position
+                object.eulerAngles = eulerAngles
+                object.scale = scale
+                
+                self.sceneView?.scene.rootNode.addChildNode(object)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func sessionWasInterrupted(_ session: ARSession) {
+        self.showPermissionDeniedAlertView(title : "세션 만료", message : "세션이 만료되어 홈 화면으로 이동합니다.", completionHandler: {
+            self.goToMapViewController()
+        })
+    }
+    
+    
+    func pinAnimate(object : VirtualObject)
+    {
+        object.showPinAnimation()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            self.playSound(name: "pin")
+            object.showPinnedAnimation()
+        }
+    }
+    
     
     var player: AVAudioPlayer?
     
@@ -768,6 +965,13 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     
     
     func goToMapViewController() {
+        for node in self.sceneView.scene.rootNode.childNodes {
+            if node is VideoFrame {
+                let video = node as! VideoFrame
+                video.player.pause()
+                video.player = nil
+            }
+        }
         
         DataManager.sharedInstance.currentWorldIndex = -1
         
@@ -804,21 +1008,47 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     
     func uploadWorld() {
         
+        self.activityIndicatorView.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
         
         uploadWorldInfo(viewController: self, completionHandler: {
             self.goToMapViewController()
+            self.activityIndicatorView.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         })
     }
     
     func uploadMsg() {
+        self.activityIndicatorView.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
         
         uploadMsgInfo(viewController: self, completionHandler: {
             self.goToMapViewController()
+            self.activityIndicatorView.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         })
+    }
+    
+    func updateCompletePercent(sequence : Int, completionPercent : Int) {
+        for object in virtualObjectList {
+            if object.sequence == sequence {
+                DispatchQueue.main.async {
+                    object.showPercentage(percent: completionPercent)
+                }
+                return
+            }
+        }
+    }
+    
+    func updateComplete(sequence : Int) {
+        for object in virtualObjectList {
+            if object.sequence == sequence {
+                DispatchQueue.main.async {
+                    object.stopPercentage()
+                }
+                return
+            }
+        }
     }
     
     func showExitAlertView() {

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DEC1039D727A28BB889E1290 /* Pods_Pinture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE6C8357322DD20494266DB /* Pods_Pinture.framework */; };
+		F636E89D20C5582A006FD2FA /* VideoFrameFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = F636E89A20C55829006FD2FA /* VideoFrameFirst.swift */; };
+		F636E89E20C5582A006FD2FA /* VideoFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F636E89B20C5582A006FD2FA /* VideoFrame.swift */; };
+		F636E89F20C5582A006FD2FA /* VideoFrameSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = F636E89C20C5582A006FD2FA /* VideoFrameSecond.swift */; };
 		F654393B20BBF4D300415123 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F654393A20BBF4D300415123 /* LoginViewController.swift */; };
 		F675278120A36AAF0078F266 /* ARWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F675278020A36AAF0078F266 /* ARWorldViewController.swift */; };
 		F67950CC208843C6000F7548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67950CB208843C6000F7548 /* AppDelegate.swift */; };
@@ -60,6 +63,9 @@
 		CDA042F4F070586812EAD83A /* Pods-Pinture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinture.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinture/Pods-Pinture.release.xcconfig"; sourceTree = "<group>"; };
 		F636E89820BC00FD006FD2FA /* PintureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureTests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureTests.xctest"; sourceTree = "<absolute>"; };
 		F636E89920BC00FD006FD2FA /* PintureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PintureUITests.xctest; path = "/Users/Wonseob/Documents/과제/#마지막학기#/캡디1/Pinture/Pinture/build/Debug-iphoneos/PintureUITests.xctest"; sourceTree = "<absolute>"; };
+		F636E89A20C55829006FD2FA /* VideoFrameFirst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFrameFirst.swift; sourceTree = "<group>"; };
+		F636E89B20C5582A006FD2FA /* VideoFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFrame.swift; sourceTree = "<group>"; };
+		F636E89C20C5582A006FD2FA /* VideoFrameSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFrameSecond.swift; sourceTree = "<group>"; };
 		F654393A20BBF4D300415123 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F654393C20BC00EC00415123 /* Pinture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pinture.entitlements; sourceTree = "<group>"; };
 		F675278020A36AAF0078F266 /* ARWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +183,9 @@
 				F6D56F9320A407B000D31D53 /* VirtualObject.swift */,
 				F6D56FA820A416DE00D31D53 /* PictureFrame.swift */,
 				F6D56FA620A416DD00D31D53 /* PictureFrameSecond.swift */,
+				F636E89B20C5582A006FD2FA /* VideoFrame.swift */,
+				F636E89A20C55829006FD2FA /* VideoFrameFirst.swift */,
+				F636E89C20C5582A006FD2FA /* VideoFrameSecond.swift */,
 			);
 			path = "Virtual Objects";
 			sourceTree = "<group>";
@@ -422,6 +431,7 @@
 				F6D56F9420A407B000D31D53 /* VirtualObject.swift in Sources */,
 				F6D56FA520A40C4E00D31D53 /* DataManager.swift in Sources */,
 				F6D56FC120AC466300D31D53 /* InputMessageViewController.swift in Sources */,
+				F636E89D20C5582A006FD2FA /* VideoFrameFirst.swift in Sources */,
 				F6D56FA220A40A8C00D31D53 /* ImageCollectionViewCell.swift in Sources */,
 				F6D56FA920A416DE00D31D53 /* PictureFrameSecond.swift in Sources */,
 				F67950CE208843C6000F7548 /* MapViewController.swift in Sources */,
@@ -431,10 +441,12 @@
 				F6D56FA120A40A8C00D31D53 /* CameraController.swift in Sources */,
 				F654393B20BBF4D300415123 /* LoginViewController.swift in Sources */,
 				F6D56FAE20AC048D00D31D53 /* DataModule.swift in Sources */,
+				F636E89E20C5582A006FD2FA /* VideoFrame.swift in Sources */,
 				F6D56FBB20AC124A00D31D53 /* WorldListViewController.swift in Sources */,
 				F6D56F9120A4068C00D31D53 /* PhotoLibraryViewController.swift in Sources */,
 				F6D56F9B20A40A5D00D31D53 /* FocusSquare.swift in Sources */,
 				F6D56FB920AC121200D31D53 /* StartingLocationViewController.swift in Sources */,
+				F636E89F20C5582A006FD2FA /* VideoFrameSecond.swift in Sources */,
 				F6D56FAF20AC048D00D31D53 /* LocalDataModule.swift in Sources */,
 				F6D56FAB20A416DE00D31D53 /* PictureFrame.swift in Sources */,
 				F6D56FA020A40A8C00D31D53 /* Utilities.swift in Sources */,

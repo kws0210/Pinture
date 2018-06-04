@@ -131,7 +131,7 @@ class DataModule {
     }
     
     
-    func uploadWorldData(viewController : ARWorldViewController, worldSequence: Int,
+    func uploadWorldData(viewController : ARViewController, worldSequence: Int,
                          latitude: CLLocationDegrees, longitude: CLLocationDegrees, image: UIImage, message: String, time: String, completionHandler : (()->Void)!) {
         
         let storage = Storage.storage()
@@ -161,7 +161,7 @@ class DataModule {
     }
     
     
-    func uploadMsgData(viewController : ARWorldViewController, completionHandler : (()->Void)!) {
+    func uploadMsgData(viewController : ARViewController, completionHandler : (()->Void)!) {
         DataManager.sharedInstance.cntUploadingMsgImage = 0
         DataManager.sharedInstance.cntDeletingMsgImage = 0
         

@@ -323,15 +323,61 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         } else {
             var hitTestOptions = [SCNHitTestOption: Any]()
             hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
-            let hits = sceneView.hitTest((touches.first?.location(in: sceneView))!, options: hitTestOptions)
-            guard let result = hits.first else {return}
-            
-            if VirtualObject.isNodePartOfVirtualObject(result.node) {
-                var object = result.node
-                while !(object is VirtualObject) {
-                    object = object.parent!
+            let results: [SCNHitTestResult] = sceneView.hitTest((touches.first?.location(in: sceneView))!, options: hitTestOptions)
+            for result in results {
+                if VirtualObject.isNodePartOfVirtualObject(result.node) {
+                    var object = result.node
+                    while !(object is VirtualObject) {
+                        object = object.parent!
+                    }
+                    self.virtualObject = object as! VirtualObject
+                    
+                    let imageDetailVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "imageDetail") as! ImageDetailViewController
+                    self.addChildViewController(imageDetailVc)
+                    imageDetailVc.view.frame = self.view.frame
+                    
+                    if virtualObject!.contentsType <= 10 {
+                        imageDetailVc.imageView.image = virtualObject?.pickedImage
+                        imageDetailVc.labelTitle.text = "사진"
+                    } else {
+                        let imgGenerator = AVAssetImageGenerator(asset: virtualObject!.pickedVideo)
+                        do {
+                            let videoFrame = virtualObject as! VideoFrame
+                            let seconds = Int(CMTimeGetSeconds(videoFrame.playerItem.duration))
+                            let minute = seconds / 60
+                            let second = seconds % 60
+                            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+                            let thumbnailImage = UIImage(cgImage: cgImage)
+                            
+                            guard let assetVideoTrack = videoFrame.pickedVideo.tracks(withMediaType: AVMediaType.video).last else {return}
+                            let videoTransform = assetVideoTrack.preferredTransform
+                            
+                            if(videoTransform.a == 0 && videoTransform.b == 1.0 && videoTransform.c == -1.0 && videoTransform.d == 0)  {
+                                imageDetailVc.imageView.image = self.imageRotatedByDegrees(oldImage: thumbnailImage, deg: 90)
+                                print("right")
+                            } else if(videoTransform.a == 0 && videoTransform.b == -1.0 && videoTransform.c == 1.0 && videoTransform.d == 0)  {
+                                imageDetailVc.imageView.image = self.imageRotatedByDegrees(oldImage: thumbnailImage, deg: -90)
+                                print("left")
+                            } else if(videoTransform.a == 1.0 && videoTransform.b == 0 && videoTransform.c == 0 && videoTransform.d == 1.0)   {
+                                imageDetailVc.imageView.image = thumbnailImage
+                                print("up")
+                            } else if(videoTransform.a == -1.0 && videoTransform.b == 0 && videoTransform.c == 0 && videoTransform.d == -1.0) {
+                                imageDetailVc.imageView.image = self.imageRotatedByDegrees(oldImage: thumbnailImage, deg: 180)
+                                print("down")
+                            }
+                            
+                            imageDetailVc.videoUrl = virtualObject?.pickedVideoUrl
+                            imageDetailVc.labelTime.text = String(format: "%02d:%02d", minute, second)
+                            imageDetailVc.labelTitle.text = "동영상"
+                        } catch let error {
+                            print(error.localizedDescription)
+                        }
+                    }
+                    
+                    self.imageDetailViewController = imageDetailVc
+                    self.view.addSubview(self.imageDetailViewController!.view)
+                    self.imageDetailViewController!.didMove(toParentViewController: self)
                 }
-                self.virtualObject = object as! VirtualObject
             }
         }
     }
@@ -380,6 +426,40 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage
+    }
+    
+    func playVideoObjectByDistance() {
+        let cam : ARCamera
+        for node in self.sceneView.scene.rootNode.childNodes {
+            if node is VideoFrame {
+                guard let camera = session.currentFrame?.camera else {return}
+                let cameraTransform = camera.transform
+                let cameraPos = SCNVector3.positionFromTransform(cameraTransform)
+                let vectorToCamera = cameraPos - node.position
+                let distanceToUser = vectorToCamera.length()
+                
+                let video = node as! VideoFrame
+                if video != nil
+                    && video.player != nil
+                    && video.player.error == nil {
+                    
+                    let diff = abs(camera.eulerAngles.x - video.eulerAngles.x) + abs(camera.eulerAngles.y - video.eulerAngles.y)
+                    let reduced = ((distanceToUser - 1) / 2 ) + diff
+                    
+                    if reduced < 1 {
+                        if video.player.rate == 0 {
+                            video.player.play()
+                        } else {
+                            video.player.volume = 1 - reduced
+                        }
+                    } else {
+                        if video.player.rate != 0 {
+                            video.player.pause()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - Virtual Object Manipulation

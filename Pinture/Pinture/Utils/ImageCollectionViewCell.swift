@@ -1,5 +1,5 @@
 //
-//  ARWorldViewController.swift
+//  ImageCollectionViewCell.swift
 //  Pinture
 //
 //  Created by Team7 on 2018. 5. 10..

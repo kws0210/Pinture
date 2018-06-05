@@ -14,13 +14,14 @@ import FirebaseStorage
 import Photos
 import AVFoundation
 
-class ARViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var btnPlus: UIButton!
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var btnStop: UIButton!
     @IBOutlet weak var btnDelete: UIButton!
-    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     
     @objc let locationManager = CLLocationManager()
     var currentLatitude, currentLongitude : CLLocationDegrees?

@@ -686,7 +686,7 @@ func getNearWorldData(latitude: CLLocationDegrees!, longitude: CLLocationDegrees
 
 
 
-func uploadWorldInfo(viewController : ARViewController, completionHandler : (()->Void)!) {
+func uploadWorldInfo(viewController : ARWorldViewController, completionHandler : (()->Void)!) {
     
     guard let worldInfo = DataManager.sharedInstance.currentWorldInfo else { return }
     
@@ -701,7 +701,7 @@ func addWorldInfo(worldSequece : Int, completionHandler: (()->Void)!) {
 }
 
 
-func uploadMsgInfo(viewController : ARViewController, completionHandler : (()->Void)!) {
+func uploadMsgInfo(viewController : ARWorldViewController, completionHandler : (()->Void)!) {
     DataManager.sharedInstance.dataModule.uploadMsgData(viewController: viewController, completionHandler: completionHandler)
 }
 

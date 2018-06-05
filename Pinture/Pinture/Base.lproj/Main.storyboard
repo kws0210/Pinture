@@ -57,11 +57,17 @@
                                     <action selector="onTouchBtnDelete:" destination="Zcf-P7-tcY" eventType="touchUpInside" id="KGd-9d-65R"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="16p-Mt-jlz">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aKD-1d-t4Z"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="16p-Mt-jlz" id="TPV-h1-i4U"/>
                         <outlet property="btnDelete" destination="eGg-pH-NBj" id="z4t-Cr-WTl"/>
                         <outlet property="btnPlus" destination="5B1-UF-e5V" id="yrw-HH-5bj"/>
                         <outlet property="btnSave" destination="VzK-QV-nRf" id="xRK-vE-qhu"/>
@@ -617,7 +623,7 @@
         <!--Image Detail View Controller-->
         <scene sceneID="8pB-5r-MOG">
             <objects>
-                <viewController storyboardIdentifier="imageDetail" id="gR8-Br-Wk2" customClass="ImageDetailViewController" customModule="timecapsule" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="imageDetail" id="gR8-Br-Wk2" customClass="ImageDetailViewController" customModule="Pinture" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="13n-JC-WBU"/>
                         <viewControllerLayoutGuide type="bottom" id="FW4-4R-35K"/>

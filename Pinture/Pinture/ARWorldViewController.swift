@@ -452,7 +452,6 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     
     
     func playVideoObjectByDistance() {
-        let cam : ARCamera
         for node in self.sceneView.scene.rootNode.childNodes {
             if node is VideoFrame {
                 guard let camera = session.currentFrame?.camera else {return}
@@ -462,8 +461,7 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
                 let distanceToUser = vectorToCamera.length()
                 
                 let video = node as! VideoFrame
-                if video != nil
-                    && video.player != nil
+                if video.player != nil
                     && video.player.error == nil {
                     
                     let diff = abs(camera.eulerAngles.x - video.eulerAngles.x) + abs(camera.eulerAngles.y - video.eulerAngles.y)
@@ -508,9 +506,6 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
         if angleDegrees < 0 {
             angleDegrees += 360
         }
-        
-        let distance = String(format: "%.2f", distanceToUser)
-        let scale = String(format: "%.2f", object.scale.x)
     }
     
     func moveVirtualObjectToPosition(_ pos: SCNVector3?, _ instantly: Bool, _ filterPosition: Bool) {

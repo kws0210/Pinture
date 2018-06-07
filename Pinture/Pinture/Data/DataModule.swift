@@ -231,43 +231,50 @@ class DataModule {
                         do {
                             let videoData = try Data(contentsOf: pathUrl)
                             
-                            let uploadTask = videoRef.putData(videoData, metadata: nil) { metadata, error in
-                                if (error != nil) {
-                                    print(error)
-                                } else {
-                                    let jsonString = formatMsgData(
-                                        sequence: msgInfo.sequence, world_sequence: msgInfo.world_sequence
-                                        ,latitude: msgInfo.latitude, longitude: msgInfo.longitude
-                                        , position_x: msgInfo.position_x, position_y: msgInfo.position_y, position_z: msgInfo.position_z
-                                        , eulerAngles_x: msgInfo.eulerAngles_x, eulerAngles_y: msgInfo.eulerAngles_y, eulerAngles_z: msgInfo.eulerAngles_z
-                                        , scale_x: msgInfo.scale_x, scale_y: msgInfo.scale_y, scale_z: msgInfo.scale_z
-                                        , extensionName: msgInfo.extensionName!
-                                        , contentsType: msgInfo.contentsType
-                                        , contentsUrl: "gs://pinture-203616.appspot.com/video/" + fileName)
-                                    
-                                    DataManager.sharedInstance.uploadingJSONList.append(jsonString)
-                                    DataManager.sharedInstance.cntUploadingMsgImage -= 1
-                                    if DataManager.sharedInstance.cntUploadingMsgImage == 0 {
-                                        self.saveSpecificData("msgInfoList")
-                                        DataManager.sharedInstance.uploadingJSONList.removeAll()
+                            DispatchQueue.main.async(execute: {() -> Void in
+                                
+                                let uploadTask = videoRef.putData(videoData, metadata: nil) { metadata, error in
+                                    if (error != nil) {
+                                        print(error)
+                                    } else {
+                                        let jsonString = formatMsgData(
+                                            sequence: msgInfo.sequence, world_sequence: msgInfo.world_sequence
+                                            ,latitude: msgInfo.latitude, longitude: msgInfo.longitude
+                                            , position_x: msgInfo.position_x, position_y: msgInfo.position_y, position_z: msgInfo.position_z
+                                            , eulerAngles_x: msgInfo.eulerAngles_x, eulerAngles_y: msgInfo.eulerAngles_y, eulerAngles_z: msgInfo.eulerAngles_z
+                                            , scale_x: msgInfo.scale_x, scale_y: msgInfo.scale_y, scale_z: msgInfo.scale_z
+                                            , extensionName: msgInfo.extensionName!
+                                            , contentsType: msgInfo.contentsType
+                                            , contentsUrl: "gs://pinture-203616.appspot.com/video/" + fileName)
                                         
-                                        if DataManager.sharedInstance.cntDeletingMsgImage == 0 {
-                                            completionHandler()
+                                        DataManager.sharedInstance.uploadingJSONList.append(jsonString)
+                                        DataManager.sharedInstance.cntUploadingMsgImage -= 1
+                                        if DataManager.sharedInstance.cntUploadingMsgImage == 0 {
+                                            self.saveSpecificData("msgInfoList")
+                                            DataManager.sharedInstance.uploadingJSONList.removeAll()
+                                            
+                                            if DataManager.sharedInstance.cntDeletingMsgImage == 0 {
+                                                completionHandler()
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            uploadTask.observe(.progress) { snapshot in
-                                let percentComplete = 100 * Int(snapshot.progress!.completedUnitCount)
-                                    / Int(snapshot.progress!.totalUnitCount)
                                 
+                                uploadTask.observe(.progress) { snapshot in
+                                    let percentComplete = 100 * Int(snapshot.progress!.completedUnitCount)
+                                        / Int(snapshot.progress!.totalUnitCount)
+                                    
+                                    
+                                    viewController.updateCompletePercent(sequence : msgInfo.sequence, completionPercent : percentComplete)
+                                }
                                 
-                                viewController.updateCompletePercent(sequence : msgInfo.sequence, completionPercent : percentComplete)
-                            }
+                                uploadTask.observe(.success) { snapshot in
+                                    viewController.updateComplete(sequence : msgInfo.sequence)
+                                }
+                                
+                            })
                             
-                            uploadTask.observe(.success) { snapshot in
-                                viewController.updateComplete(sequence : msgInfo.sequence)
-                            }
+                            
                         } catch {
                             print(error)
                             return

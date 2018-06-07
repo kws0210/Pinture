@@ -150,7 +150,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
             if DataManager.sharedInstance.userWorldSequenceList.contains(openParam) {
                 for world in DataManager.sharedInstance.worldInfoList {
                     if world.world_sequence == openParam {
-                        self.showMessageAlertView(message: "\'\(world.message)\'ìëê° ì´ë¯¸ ììµëë¤.", completionHandler: {
+                        self.showMessageAlertView(message: "\'\(world.message)\'월드가 이미 있습니다.", completionHandler: {
                             appDelegate.openParam = 0
                         })
                         break
@@ -160,7 +160,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
                 checkWorldExist(worldSequence: openParam, posCompletion: {
                     self.showAddWorldAlertView(worldSequence: openParam)
                 }, negCompletion: {
-                    self.showMessageAlertView(message: "ì­ì ë ìëìëë¤.", completionHandler: {
+                    self.showMessageAlertView(message: "삭제된 월드입니다.", completionHandler: {
                         appDelegate.openParam = 0
                     })
                 })

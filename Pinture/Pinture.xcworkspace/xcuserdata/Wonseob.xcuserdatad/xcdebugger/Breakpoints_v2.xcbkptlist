@@ -2,4 +2,214 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pinture/PhotoLibraryViewController.swift"
+            timestampString = "550050869.518695"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "onTouchBtnTitle(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pinture/Data/DataModule.swift"
+            timestampString = "550050869.519154"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "uploadMsgData(viewController:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pinture/Data/DataModule.swift"
+            timestampString = "550050869.519417"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "uploadMsgData(viewController:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pinture/Data/DataModule.swift"
+            timestampString = "550050869.519668"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "uploadMsgData(viewController:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; () in Pinture.DataModule.uploadMsgData(viewController: Pinture.ARWorldViewController, completionHandler: Swift.ImplicitlyUnwrappedOptional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Pinture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wonseob/Documents/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6/%23%E1%84%86%E1%85%A1%E1%84%8C%E1%85%B5%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1%E1%86%A8%E1%84%80%E1%85%B5%23/%E1%84%8F%E1%85%A2%E1%86%B8%E1%84%83%E1%85%B51/Pinture/Pinture/Pinture/Data/DataModule.swift"
+                  timestampString = "550050869.648867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.StorageMetadata&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Pinture.DataModule.uploadMsgData(viewController: Pinture.ARWorldViewController, completionHandler: Swift.ImplicitlyUnwrappedOptional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Pinture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wonseob/Documents/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6/%23%E1%84%86%E1%85%A1%E1%84%8C%E1%85%B5%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1%E1%86%A8%E1%84%80%E1%85%B5%23/%E1%84%8F%E1%85%A2%E1%86%B8%E1%84%83%E1%85%B51/Pinture/Pinture/Pinture/Data/DataModule.swift"
+                  timestampString = "550050869.6549751"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pinture/Data/DataModule.swift"
+            timestampString = "550050869.519913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "uploadMsgData(viewController:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; () in Pinture.DataModule.uploadMsgData(viewController: Pinture.ARWorldViewController, completionHandler: Swift.ImplicitlyUnwrappedOptional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Pinture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wonseob/Documents/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6/%23%E1%84%86%E1%85%A1%E1%84%8C%E1%85%B5%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1%E1%86%A8%E1%84%80%E1%85%B5%23/%E1%84%8F%E1%85%A2%E1%86%B8%E1%84%83%E1%85%B51/Pinture/Pinture/Pinture/Data/DataModule.swift"
+                  timestampString = "550050869.664193"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "260"
+                  endingLineNumber = "260"
+                  offsetFromSymbolStart = "1144">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__ObjC.StorageTaskSnapshot) -&gt; () in closure #4 () -&gt; () in Pinture.DataModule.uploadMsgData(viewController: Pinture.ARWorldViewController, completionHandler: Swift.ImplicitlyUnwrappedOptional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Pinture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wonseob/Documents/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6/%23%E1%84%86%E1%85%A1%E1%84%8C%E1%85%B5%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1%E1%86%A8%E1%84%80%E1%85%B5%23/%E1%84%8F%E1%85%A2%E1%86%B8%E1%84%83%E1%85%B51/Pinture/Pinture/Pinture/Data/DataModule.swift"
+                  timestampString = "550050869.666281"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pinture/Data/DataModule.swift"
+            timestampString = "550050869.520152"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "uploadMsgData(viewController:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; () in Pinture.DataModule.uploadMsgData(viewController: Pinture.ARWorldViewController, completionHandler: Swift.ImplicitlyUnwrappedOptional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Pinture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wonseob/Documents/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6/%23%E1%84%86%E1%85%A1%E1%84%8C%E1%85%B5%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1%E1%86%A8%E1%84%80%E1%85%B5%23/%E1%84%8F%E1%85%A2%E1%86%B8%E1%84%83%E1%85%B51/Pinture/Pinture/Pinture/Data/DataModule.swift"
+                  timestampString = "550050869.671713"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "1640">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (__ObjC.StorageTaskSnapshot) -&gt; () in closure #4 () -&gt; () in Pinture.DataModule.uploadMsgData(viewController: Pinture.ARWorldViewController, completionHandler: Swift.ImplicitlyUnwrappedOptional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Pinture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wonseob/Documents/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6/%23%E1%84%86%E1%85%A1%E1%84%8C%E1%85%B5%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1%E1%86%A8%E1%84%80%E1%85%B5%23/%E1%84%8F%E1%85%A2%E1%86%B8%E1%84%83%E1%85%B51/Pinture/Pinture/Pinture/Data/DataModule.swift"
+                  timestampString = "550050869.673782"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "269"
+                  endingLineNumber = "269"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pinture/Data/DataModule.swift"
+            timestampString = "550050869.520393"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "uploadMsgData(viewController:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

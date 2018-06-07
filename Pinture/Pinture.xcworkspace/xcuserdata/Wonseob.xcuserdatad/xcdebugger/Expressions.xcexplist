@@ -27,5 +27,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "DataModule.uploadMsgData(viewController:completionHandler:):DataModule.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "msgInfo.contentsUrl">
+            </PersistentString>
+            <PersistentString
+               value = "videoRef.isNil()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

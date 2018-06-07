@@ -143,7 +143,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
     }
     
     func checkOpenParam() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate;
+        let openParam = appDelegate.openParam as Int
         
+        if openParam != 0 {
+            if DataManager.sharedInstance.userWorldSequenceList.contains(openParam) {
+                for world in DataManager.sharedInstance.worldInfoList {
+                    if world.world_sequence == openParam {
+                        self.showMessageAlertView(message: "\'\(world.message)\'ìëê° ì´ë¯¸ ììµëë¤.", completionHandler: {
+                            appDelegate.openParam = 0
+                        })
+                        break
+                    }
+                }
+            } else {
+                checkWorldExist(worldSequence: openParam, posCompletion: {
+                    self.showAddWorldAlertView(worldSequence: openParam)
+                }, negCompletion: {
+                    self.showMessageAlertView(message: "ì­ì ë ìëìëë¤.", completionHandler: {
+                        appDelegate.openParam = 0
+                    })
+                })
+            }
+        }
     }
     
     @IBAction func onTouchBtnLogout(_ sender: Any) {

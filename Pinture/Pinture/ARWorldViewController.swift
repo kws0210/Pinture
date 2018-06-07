@@ -704,7 +704,10 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
     func loadVirtualObject() {
         guard let image     = DataManager.sharedInstance.pickedImage            else {return}
         guard let ext       = DataManager.sharedInstance.pickedExtensionName    else {return}
-        let videoUrl  = DataManager.sharedInstance.pickedVideoUrl
+        
+        if DataManager.sharedInstance.pickedVideoUrl != nil {
+            DataManager.sharedInstance.tempVideoUrl  = DataManager.sharedInstance.pickedVideoUrl
+        }
         
         resetVirtualObject()
         
@@ -714,8 +717,7 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
             self.isLoadingObject = true
             
             if DataManager.sharedInstance.isVideoMode {
-                
-                let video = AVAsset(url: videoUrl!)
+                let video = AVAsset(url: DataManager.sharedInstance.tempVideoUrl!)
                 guard let videoTrack = video.tracks(withMediaType: AVMediaType.video).first else {return}
                 let size = videoTrack.naturalSize
                 let txf = videoTrack.preferredTransform
@@ -723,9 +725,9 @@ class ARWorldViewController: UIViewController, ARSCNViewDelegate, SKViewDelegate
                 
                 var object : VideoFrame!
                 if abs(realVidSize.width) < abs(realVidSize.height) {
-                    object = VideoFrameFirst(video: video, videoUrl: videoUrl!, extensionName: ext)
+                    object = VideoFrameFirst(video: video, videoUrl: DataManager.sharedInstance.tempVideoUrl!, extensionName: ext)
                 } else {
-                    object = VideoFrameSecond(video: video, videoUrl: videoUrl!, extensionName: ext)
+                    object = VideoFrameSecond(video: video, videoUrl: DataManager.sharedInstance.tempVideoUrl!, extensionName: ext)
                 }
                 
                 self.virtualObject = object

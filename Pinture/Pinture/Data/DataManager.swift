@@ -70,6 +70,7 @@ final class DataManager {
     
     var pickedImage : UIImage?
     var pickedVideoUrl : URL?
+    var tempVideoUrl : URL?
     var pickedExtensionName : String?
     var isVideoMode = false
     var cntNetworkingMsgURL = 0
